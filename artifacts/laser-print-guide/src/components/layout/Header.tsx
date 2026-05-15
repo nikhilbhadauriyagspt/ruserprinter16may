@@ -57,7 +57,7 @@ export function Header() {
             : "bg-white/80 backdrop-blur-sm border-b border-transparent py-4"
         }`}
       >
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="w-full px-4 md:px-8">
           <div className="flex items-center justify-between gap-4 md:gap-8">
             {/* Mobile Menu */}
             <div className="md:hidden flex items-center">

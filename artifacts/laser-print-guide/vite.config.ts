@@ -31,47 +31,13 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
-      ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer({
-              root: path.resolve(import.meta.dirname, ".."),
-            }),
-          ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
-        ]
-      : []),
+    // Removed Replit plugins that might interfere locally
   ],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
-      react: path.resolve(
-        import.meta.dirname,
-        "..",
-        "..",
-        "node_modules",
-        ".pnpm",
-        "react@19.1.0",
-        "node_modules",
-        "react",
-      ),
-      "react-dom": path.resolve(
-        import.meta.dirname,
-        "..",
-        "..",
-        "node_modules",
-        ".pnpm",
-        "react-dom@19.1.0_react@19.1.0",
-        "node_modules",
-        "react-dom",
-      ),
     },
-    dedupe: ["react", "react-dom"],
   },
   optimizeDeps: {
     include: [
@@ -79,8 +45,8 @@ export default defineConfig({
       "react-dom",
       "react-dom/client",
       "react/jsx-runtime",
+      "@paypal/react-paypal-js",
     ],
-    exclude: ["@paypal/react-paypal-js"],
   },
   root: path.resolve(import.meta.dirname),
   build: {

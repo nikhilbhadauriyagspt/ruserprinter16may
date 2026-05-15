@@ -3,8 +3,8 @@ import { Link, useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { CheckCircle2, Lock, ArrowRight } from "lucide-react";
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { CheckCircle2, Lock, ArrowRight, Loader2 } from "lucide-react";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { SEO } from "@/components/SEO";
 import { useCart } from "@/contexts/CartContext";
 import { useCreateOrder } from "@/lib/api";
@@ -23,9 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
 
-const PAYPAL_CLIENT_ID =
-  "Aa7mAnBKh44YCdokTrFjIP1wIB6mVVjrN8z-NZc_G2VLYJle_Xz9pMdOO7DRXx7zYT7Gh0dzbJUY9DDm";
-
 const shippingSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Valid email is required"),
@@ -42,6 +39,7 @@ export default function Checkout() {
   const [, setLocation] = useLocation();
   const { items, subtotal, clearCart } = useCart();
   const createOrder = useCreateOrder();
+  const [{ isPending }] = usePayPalScriptReducer();
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [shippingData, setShippingData] =
@@ -393,59 +391,62 @@ export default function Checkout() {
                   </RadioGroup>
 
                   {paymentMethod === "paypal" ? (
-                    <div className="border border-slate-200 rounded-xl p-4 bg-white">
-                      <PayPalScriptProvider
-                        options={{
-                          clientId: PAYPAL_CLIENT_ID,
-                          currency: "USD",
-                          intent: "capture",
-                          components: "buttons",
-                        }}
-                      >
-                        <PayPalButtons
-                          forceReRender={[total]}
-                          style={{
-                            layout: "vertical",
-                            shape: "pill",
-                            label: "pay",
-                          }}
-                          disabled={createOrder.isPending || total <= 0}
-                          createOrder={async (_, actions) => {
-                            const amount = Number(total || 0).toFixed(2);
+                    <div className="border border-slate-200 rounded-xl p-4 bg-white min-h-[150px] flex items-center justify-center">
+                      {isPending ? (
+                        <div className="flex flex-col items-center gap-2">
+                          <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                          <p className="text-sm text-slate-500">Loading PayPal...</p>
+                        </div>
+                      ) : (
+                        <div className="w-full" key={total}>
+                          <PayPalButtons
+                            forceReRender={[total]}
+                            style={{
+                              layout: "vertical",
+                              shape: "pill",
+                              label: "pay",
+                            }}
+                            disabled={createOrder.isPending || total <= 0}
+                            onInit={() => console.log("PayPal Buttons initialized")}
+                            createOrder={async (_, actions) => {
+                              console.log("Creating PayPal order for amount:", total);
+                              const amount = Number(total || 0).toFixed(2);
 
-                            if (Number(amount) <= 0) {
-                              alert("Cart total must be greater than 0.");
-                              throw new Error("Invalid PayPal amount");
-                            }
+                              if (Number(amount) <= 0) {
+                                alert("Cart total must be greater than 0.");
+                                throw new Error("Invalid PayPal amount");
+                              }
 
-                            return actions.order.create({
-                              purchase_units: [
-                                {
-                                  amount: {
-                                    value: amount,
-                                    currency_code: "USD",
+                              return actions.order.create({
+                                purchase_units: [
+                                  {
+                                    amount: {
+                                      value: amount,
+                                      currency_code: "USD",
+                                    },
                                   },
-                                },
-                              ],
-                            });
-                          }}
-                          onApprove={async (_, actions) => {
-                            if (!actions.order) {
-                              alert("PayPal order not found.");
-                              return;
-                            }
+                                ],
+                              });
+                            }}
+                            onApprove={async (_, actions) => {
+                              console.log("PayPal order approved");
+                              if (!actions.order) {
+                                alert("PayPal order not found.");
+                                return;
+                              }
 
-                            const details = await actions.order.capture();
-                            await finalizeOrder(details);
-                          }}
-                          onError={(err) => {
-                            console.error("PayPal error full:", err);
-                            alert(
-                              "PayPal payment failed. Please check console."
-                            );
-                          }}
-                        />
-                      </PayPalScriptProvider>
+                              const details = await actions.order.capture();
+                              await finalizeOrder(details);
+                            }}
+                            onError={(err) => {
+                              console.error("PayPal error full:", err);
+                              alert(
+                                "PayPal payment failed. Please check console."
+                              );
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <Button
