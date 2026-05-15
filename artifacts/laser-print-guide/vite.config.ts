@@ -79,8 +79,8 @@ export default defineConfig({
       "react-dom",
       "react-dom/client",
       "react/jsx-runtime",
-      "@paypal/react-paypal-js",
     ],
+    exclude: ["@paypal/react-paypal-js"],
   },
   root: path.resolve(import.meta.dirname),
   build: {
