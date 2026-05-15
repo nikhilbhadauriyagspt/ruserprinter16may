@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO 
-        title="Laser Print Guide — Premium Printers & Accessories" 
+        title="My Printer Master — Premium Printers & Accessories" 
         description="Shop authentic, high-performance printers and printing accessories from HP and other leading brands. Fast checkout and free shipping on all orders."
       />
       
@@ -79,12 +79,12 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">About Laser Print Guide</span>
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">About My Printer Master</span>
               <h1 className="mt-4 text-[34px] md:text-[44px] font-semibold tracking-tight text-slate-950 leading-[1.1]">
                 Printing made simple,<br />from home to office.
               </h1>
               <p className="mt-6 text-slate-600 leading-7 text-[16px]">
-                We started Laser Print Guide because choosing a printer shouldn't feel overwhelming. Whether you're setting up a home study, a small business, or a busy office — we help you cut through the jargon and find the model that just works.
+                We started My Printer Master because choosing a printer shouldn't feel overwhelming. Whether you're setting up a home study, a small business, or a busy office — we help you cut through the jargon and find the model that just works.
               </p>
               <p className="mt-4 text-slate-600 leading-7 text-[16px]">
                 Every product on our shelves is curated, clearly described, and backed by friendly support. No pressure, no fine print — just honest help with your next print job.
@@ -245,7 +245,7 @@ export default function Home() {
             Ready To Explore?
           </span>
           <h2 className="mt-4 text-[38px] font-semibold tracking-tight md:text-[54px]">
-            Get Started With Laser Print Guide
+            Get Started With My Printer Master
           </h2>
           <p className="mx-auto mt-5 max-w-[620px] text-[16px] leading-8 text-slate-400">
             You're welcome to explore our collection and find what works best for you.

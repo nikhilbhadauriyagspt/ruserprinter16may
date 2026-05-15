@@ -5,14 +5,14 @@ interface SEOProps {
   description?: string;
 }
 
-const DEFAULT_DESCRIPTION = "Shop authentic printers and accessories at Laser Print Guide. We offer expert help, clear specs, and free shipping on all orders.";
+const DEFAULT_DESCRIPTION = "Shop authentic printers and accessories at My Printer Master. We offer expert help, clear specs, and free shipping on all orders.";
 
 export function SEO({ title, description = DEFAULT_DESCRIPTION }: SEOProps) {
   useEffect(() => {
     // Ensure title is between 30-60 characters
     let displayTitle = title;
-    if (!displayTitle.includes("Laser Print Guide") && displayTitle.length < 40) {
-      displayTitle = `${displayTitle} | Laser Print Guide`;
+    if (!displayTitle.includes("My Printer Master") && displayTitle.length < 40) {
+      displayTitle = `${displayTitle} | My Printer Master`;
     }
     
     // Trim if still too long (Target 55-60 for pixel width safety)
