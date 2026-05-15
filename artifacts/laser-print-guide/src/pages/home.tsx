@@ -32,13 +32,13 @@ export default function Home() {
         <div className="relative mx-auto max-w-[1200px] grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-primary">
-              <BadgeCheck className="w-3.5 h-3.5" /> Trusted Printer Store
+              <BadgeCheck className="w-3.5 h-3.5" /> Your Everyday Printer Store
             </span>
             <h1 className="mt-5 text-[40px] font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-[60px]">
               The Right Printer<br />For Every Workspace
             </h1>
             <p className="mx-auto lg:mx-0 mt-6 max-w-[540px] text-[16px] md:text-lg leading-7 text-slate-600">
-              Inkjet, Laser, Supertank and more — explore a carefully curated range from HP, Canon, Epson and Lexmark, all in one calm shopping experience.
+              Inkjet, Laser, Supertank and more — explore a carefully curated range of printers and accessories, all in one calm shopping experience.
             </p>
             <div className="mt-9 flex flex-wrap justify-center lg:justify-start gap-3">
               <Button asChild size="lg" className="rounded-full px-7 text-base shadow-md shadow-primary/20">
@@ -81,20 +81,20 @@ export default function Home() {
             </div>
             <div className="absolute -top-2 -left-6 bg-white rounded-2xl shadow-xl shadow-slate-300/40 px-5 py-3 flex items-center gap-3 border border-slate-100">
               <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                <BadgeCheck className="w-5 h-5" />
+                <Truck className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs text-slate-500">Genuine</div>
-                <div className="text-sm font-semibold text-slate-900">Brand Verified</div>
+                <div className="text-xs text-slate-500">Quick</div>
+                <div className="text-sm font-semibold text-slate-900">Free Shipping</div>
               </div>
             </div>
             <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl shadow-slate-300/40 px-5 py-3 flex items-center gap-3 border border-slate-100">
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <Headphones className="w-5 h-5" />
+                <RefreshCw className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs text-slate-500">Friendly</div>
-                <div className="text-sm font-semibold text-slate-900">Expert Support</div>
+                <div className="text-xs text-slate-500">No Hassle</div>
+                <div className="text-sm font-semibold text-slate-900">Easy Returns</div>
               </div>
             </div>
           </div>
@@ -112,13 +112,13 @@ export default function Home() {
                 </div>
                 <div className="rounded-2xl bg-primary/95 text-white p-6 aspect-square flex flex-col justify-between">
                   <div className="text-4xl font-bold">200+</div>
-                  <div className="text-sm font-medium opacity-90">Printer models from leading brands, hand-picked for everyday reliability.</div>
+                  <div className="text-sm font-medium opacity-90">Printer models hand-picked for everyday reliability.</div>
                 </div>
               </div>
               <div className="space-y-4 mt-10">
                 <div className="rounded-2xl bg-slate-900 text-white p-6 aspect-square flex flex-col justify-between">
-                  <div className="text-4xl font-bold">4</div>
-                  <div className="text-sm font-medium opacity-80">Trusted brands — HP, Canon, Epson, Lexmark — all under one roof.</div>
+                  <div className="text-4xl font-bold">10+</div>
+                  <div className="text-sm font-medium opacity-80">Printer categories — from inkjet and laser to thermal and large format.</div>
                 </div>
                 <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-100 aspect-[4/5] flex items-center justify-center p-6">
                   <img src={`${import.meta.env.BASE_URL}category/inkjet-printers.jpg`} alt="Inkjet Printers" className="w-full h-full object-contain" />
@@ -142,8 +142,8 @@ export default function Home() {
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-900">Genuine Products</div>
-                    <div className="text-sm text-slate-500">100% authentic, brand sourced.</div>
+                    <div className="font-semibold text-slate-900">Quality Picks</div>
+                    <div className="text-sm text-slate-500">Carefully selected for reliability.</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
