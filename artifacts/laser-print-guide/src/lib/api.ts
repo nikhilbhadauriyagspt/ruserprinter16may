@@ -6,6 +6,7 @@ export interface Category {
   id: string;
   name: string;
   slug: string;
+  image?: string | null;
   children?: Category[];
 }
 
@@ -111,7 +112,18 @@ export function useCategories() {
       const res = await fetch(`${BASE_URL}/categories`);
       if (!res.ok) throw new Error("Failed to fetch categories");
       const data = await res.json();
-      return (data.data as Category[]).filter(filterCategory);
+      const top = (data.data as Category[]).filter(filterCategory);
+      const leaves: Category[] = [];
+      for (const c of top) {
+        if (c.children && c.children.length > 0) {
+          for (const child of c.children) {
+            if (filterCategory(child) && child.image) leaves.push(child);
+          }
+        } else if (c.image) {
+          leaves.push(c);
+        }
+      }
+      return leaves;
     },
   });
 }
