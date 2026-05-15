@@ -1,13 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { ShoppingCart, Heart, Search, Menu, X, Printer } from "lucide-react";
+import { ShoppingCart, Heart, Search, Menu, User, LogOut, Package } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { useProducts } from "@/lib/api";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,6 +26,7 @@ export function Header() {
 
   const { totalItems } = useCart();
   const { items: wishlistItems } = useWishlist();
+  const { user, isAuthenticated, logout } = useAuth();
 
   
   // Quick search
@@ -62,8 +72,22 @@ export function Header() {
                     <Link href="/">Home</Link>
                     <Link href="/shop">Shop All</Link>
                     <Link href="/about">About</Link>
+                    <Link href="/track-order">Track Order</Link>
                     <Link href="/faq">FAQ</Link>
                     <Link href="/contact">Contact</Link>
+                    <div className="border-t border-slate-200 pt-6 flex flex-col gap-4">
+                      {isAuthenticated ? (
+                        <>
+                          <div className="text-sm text-slate-500">Signed in as <span className="font-semibold text-slate-900">{user?.name}</span></div>
+                          <button onClick={logout} className="text-left text-rose-600">Sign Out</button>
+                        </>
+                      ) : (
+                        <>
+                          <Link href="/login">Sign In</Link>
+                          <Link href="/signup">Create Account</Link>
+                        </>
+                      )}
+                    </div>
                   </nav>
                 </SheetContent>
               </Sheet>
@@ -79,6 +103,7 @@ export function Header() {
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
               <Link href="/shop" className="hover:text-primary transition-colors">Shop</Link>
               <Link href="/about" className="hover:text-primary transition-colors">About</Link>
+              <Link href="/track-order" className="hover:text-primary transition-colors">Track Order</Link>
               <Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link>
               <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
             </nav>
@@ -109,6 +134,40 @@ export function Header() {
                   </div>
                 )}
               </div>
+
+              {isAuthenticated ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-sm font-medium text-slate-700">
+                      <span className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">
+                        {user?.name?.charAt(0).toUpperCase() || "U"}
+                      </span>
+                      <span className="max-w-[100px] truncate">{user?.name?.split(" ")[0]}</span>
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel>
+                      <div className="font-semibold">{user?.name}</div>
+                      <div className="text-xs font-normal text-slate-500 truncate">{user?.email}</div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/track-order"><Package className="w-4 h-4 mr-2" /> Track Order</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/wishlist"><Heart className="w-4 h-4 mr-2" /> My Wishlist</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={logout} className="text-rose-600 focus:text-rose-600">
+                      <LogOut className="w-4 h-4 mr-2" /> Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link href="/login" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+                  <User className="w-4 h-4" /> Sign In
+                </Link>
+              )}
 
               <Link href="/wishlist" className="relative p-2 text-slate-600 hover:text-primary transition-colors">
                 <Heart className="w-5 h-5" />

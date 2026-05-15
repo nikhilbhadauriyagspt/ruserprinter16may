@@ -84,10 +84,10 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li><Link href="/faq" className="hover:text-primary transition-colors">Frequently Asked Questions</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+              <li><Link href="/track-order" className="hover:text-primary transition-colors">Track Your Order</Link></li>
               <li><Link href="/shipping-policy" className="hover:text-primary transition-colors">Shipping Policy</Link></li>
               <li><Link href="/return-policy" className="hover:text-primary transition-colors">Return Policy</Link></li>
               <li><Link href="/wishlist" className="hover:text-primary transition-colors">My Wishlist</Link></li>
-              <li><Link href="/cart" className="hover:text-primary transition-colors">My Shopping Cart</Link></li>
             </ul>
           </div>
 

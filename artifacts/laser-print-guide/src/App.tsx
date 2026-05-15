@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { CartProvider } from "@/contexts/CartContext";
 import { WishlistProvider } from "@/contexts/WishlistContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { Layout } from "@/components/layout/Layout";
 
 import Home from "@/pages/home";
@@ -21,6 +22,9 @@ import TermsAndConditions from "@/pages/terms-and-conditions";
 import ReturnPolicy from "@/pages/return-policy";
 import ShippingPolicy from "@/pages/shipping-policy";
 import CookiePolicy from "@/pages/cookie-policy";
+import Login from "@/pages/login";
+import Signup from "@/pages/signup";
+import TrackOrder from "@/pages/track-order";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient({
@@ -56,6 +60,9 @@ function Router() {
         <Route path="/return-policy" component={ReturnPolicy} />
         <Route path="/shipping-policy" component={ShippingPolicy} />
         <Route path="/cookie-policy" component={CookiePolicy} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/track-order" component={TrackOrder} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
@@ -65,16 +72,18 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
-        <WishlistProvider>
-          <TooltipProvider>
-            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-              <Router />
-            </WouterRouter>
-            <Toaster />
-          </TooltipProvider>
-        </WishlistProvider>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <WishlistProvider>
+            <TooltipProvider>
+              <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                <Router />
+              </WouterRouter>
+              <Toaster />
+            </TooltipProvider>
+          </WishlistProvider>
+        </CartProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

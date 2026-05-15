@@ -188,6 +188,76 @@ export function useFeaturedProducts() {
   });
 }
 
+export interface AuthUser {
+  id: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  address?: string | null;
+  created_at?: string;
+}
+
+export interface TrackedOrder {
+  id: number | string;
+  order_number?: string;
+  status?: string;
+  total?: number | string;
+  payment_method?: string;
+  created_at?: string;
+  items?: Array<{ name: string; quantity: number; price: number | string }>;
+  [key: string]: unknown;
+}
+
+export function useLogin() {
+  return useMutation({
+    mutationFn: async (payload: { email: string; password: string }) => {
+      const res = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "email", identifier: payload.email, password: payload.password }),
+      });
+      const data = await res.json();
+      if (data.status !== "success") {
+        throw new Error(data.message || "Login failed");
+      }
+      return data.data as AuthUser;
+    },
+  });
+}
+
+export function useRegister() {
+  return useMutation({
+    mutationFn: async (payload: { name: string; email: string; password: string; phone?: string }) => {
+      const res = await fetch(`${BASE_URL}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data.status !== "success") {
+        throw new Error(data.message || "Registration failed");
+      }
+      return data;
+    },
+  });
+}
+
+export function useTrackOrder() {
+  return useMutation({
+    mutationFn: async (payload: { email?: string; order_id?: string }) => {
+      const params = new URLSearchParams();
+      if (payload.email) params.append("email", payload.email);
+      if (payload.order_id) params.append("order_id", payload.order_id);
+      const res = await fetch(`${BASE_URL}/orders/track?${params.toString()}`);
+      const data = await res.json();
+      if (data.status !== "success") {
+        throw new Error(data.message || "Could not find any orders");
+      }
+      return (data.data as TrackedOrder[]) || [];
+    },
+  });
+}
+
 export function useCreateOrder() {
   return useMutation({
     mutationFn: async (payload: OrderPayload) => {
