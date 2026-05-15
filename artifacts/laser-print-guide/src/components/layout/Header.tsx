@@ -90,9 +90,8 @@ export function Header() {
             </div>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold text-slate-900 tracking-tight shrink-0">
-              <Printer className="w-6 h-6 text-primary" />
-              <span>Laser<span className="text-primary">Print</span>Guide</span>
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="Laser Print Guide" className="h-10 w-auto" />
             </Link>
 
             {/* Desktop Nav */}
@@ -125,7 +124,8 @@ export function Header() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
-
+              
+              <Link href="/about" className="hover:text-primary transition-colors">About</Link>
               <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
             </nav>
 

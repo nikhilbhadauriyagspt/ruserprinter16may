@@ -14,7 +14,7 @@ import printer1 from "@/assets/printer1.png";
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { data: product, isLoading, error } = useProduct(slug || "");
-  const { data: relatedProducts } = useProducts({ category: product?.category_slug, limit: 4 });
+  const { data: relatedProducts } = useProducts({ category: product?.category_id, limit: 4 });
   
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
@@ -97,7 +97,7 @@ export default function ProductDetail() {
           <ChevronRight className="w-4 h-4 shrink-0" />
           <Link href="/shop" className="hover:text-primary">Shop</Link>
           <ChevronRight className="w-4 h-4 shrink-0" />
-          <Link href={`/category/${product.category_slug}`} className="hover:text-primary">{product.category_name}</Link>
+          <Link href="/shop" className="hover:text-primary">{product.category_name}</Link>
           <ChevronRight className="w-4 h-4 shrink-0" />
           <span className="text-slate-900 font-medium truncate">{product.name}</span>
         </div>

@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link, useLocation, useSearch } from "wouter";
-import { Filter, SlidersHorizontal, ChevronDown } from "lucide-react";
+import { Filter, SlidersHorizontal, ChevronDown, Search } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { useProducts, useCategories, useBrands } from "@/lib/api";
 import { ProductCard } from "@/components/ProductCard";

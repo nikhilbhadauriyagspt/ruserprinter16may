@@ -71,9 +71,38 @@ export function resolveImageUrl(path: string): string {
   if (path.startsWith("http://") || path.startsWith("https://")) {
     return path;
   }
-  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-  return `${BASE_URL}/${cleanPath}`;
+  let cleanPath = path.startsWith("/") ? path.slice(1) : path;
+  if (!cleanPath.startsWith("products/")) {
+    cleanPath = `products/${cleanPath}`;
+  }
+  return `${import.meta.env.BASE_URL}${cleanPath}`;
 }
+
+const filterCategory = (c: Category): boolean => {
+  const skip = ["laptop", "computer", "pc", "notebook"];
+  const nameMatch = skip.some(s => c.name.toLowerCase().includes(s));
+  const slugMatch = skip.some(s => c.slug.toLowerCase().includes(s));
+  if (nameMatch || slugMatch) return false;
+  if (c.children) {
+    c.children = c.children.filter(filterCategory);
+  }
+  return true;
+};
+
+const filterProduct = (p: Product): boolean => {
+  const name = (p.name ?? "").toLowerCase();
+  const skipNames = ["laptop", "macbook", "notebook", "chromebook", "computer"];
+  if (skipNames.some(s => name.includes(s))) return false;
+  const brand = (p.brand_name ?? "").toLowerCase().trim();
+  const skipBrands = ["brother", "xerox"];
+  if (brand && skipBrands.includes(brand)) return false;
+  return true;
+};
+
+const filterBrand = (b: Brand): boolean => {
+  const skip = ["brother", "xerox"];
+  return !skip.some(s => b.name.toLowerCase() === s);
+};
 
 export function useCategories() {
   return useQuery({
@@ -82,7 +111,7 @@ export function useCategories() {
       const res = await fetch(`${BASE_URL}/categories`);
       if (!res.ok) throw new Error("Failed to fetch categories");
       const data = await res.json();
-      return data.data as Category[];
+      return (data.data as Category[]).filter(filterCategory);
     },
   });
 }
@@ -94,7 +123,7 @@ export function useBrands() {
       const res = await fetch(`${BASE_URL}/brands`);
       if (!res.ok) throw new Error("Failed to fetch brands");
       const data = await res.json();
-      return data.data as Brand[];
+      return (data.data as Brand[]).filter(filterBrand);
     },
   });
 }
@@ -112,7 +141,7 @@ export function useProducts(params?: { limit?: number; category?: string; search
       const res = await fetch(url.toString());
       if (!res.ok) throw new Error("Failed to fetch products");
       const data = await res.json();
-      return data.data as Product[];
+      return (data.data as Product[]).filter(filterProduct);
     },
   });
 }
@@ -127,6 +156,23 @@ export function useProduct(slug: string) {
       return data.data as Product;
     },
     enabled: !!slug,
+  });
+}
+
+export function useFeaturedProducts() {
+  return useQuery({
+    queryKey: ["featured-products"],
+    queryFn: async () => {
+      const res = await fetch(`${BASE_URL}/products?limit=1000`);
+      if (!res.ok) throw new Error("Failed to fetch products");
+      const data = await res.json();
+      const products = (data.data as Product[]).filter(filterProduct);
+      const featured = ["hp", "canon", "epson", "lexmark"];
+      return products.filter(p => {
+        const brand = (p.brand_name ?? "").toLowerCase().trim();
+        return featured.includes(brand);
+      });
+    },
   });
 }
 
