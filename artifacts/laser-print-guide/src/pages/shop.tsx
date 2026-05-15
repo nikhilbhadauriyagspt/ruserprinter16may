@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useLocation, useSearch } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { Filter, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { useProducts, useCategories, useBrands } from "@/lib/api";
