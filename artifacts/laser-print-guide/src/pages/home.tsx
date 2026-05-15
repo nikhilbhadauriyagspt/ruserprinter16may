@@ -23,7 +23,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <SEO title="My Printer Master — Premium Printers & Accessories" />
+      <SEO 
+        title="Laser Print Guide — Premium Printers & Accessories" 
+        description="Shop authentic, high-performance printers and printing accessories from HP and other leading brands. Fast checkout and free shipping on all orders."
+      />
       
       {/* Hero Banner */}
       <section className="bg-white">
@@ -76,15 +79,15 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">About Our Store</span>
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">About Laser Print Guide</span>
               <h1 className="mt-4 text-[34px] md:text-[44px] font-semibold tracking-tight text-slate-950 leading-[1.1]">
-                Quality printing solutions,<br />from home to office.
+                Printing made simple,<br />from home to office.
               </h1>
               <p className="mt-6 text-slate-600 leading-7 text-[16px]">
-                We started My Printer Master because choosing the right equipment shouldn't feel overwhelming. Whether you're setting up a home study, a small business, or a busy workspace — we help you cut through the jargon and find the solution that just works.
+                We started Laser Print Guide because choosing a printer shouldn't feel overwhelming. Whether you're setting up a home study, a small business, or a busy office — we help you cut through the jargon and find the model that just works.
               </p>
               <p className="mt-4 text-slate-600 leading-7 text-[16px]">
-                Every item in our collection is curated, clearly described, and backed by professional support. No pressure, no fine print — just honest help with your next hardware setup.
+                Every product on our shelves is curated, clearly described, and backed by friendly support. No pressure, no fine print — just honest help with your next print job.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
@@ -161,9 +164,9 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">Shop by Category</span>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Find the right device</h2>
-              <p className="text-slate-500 mt-2 max-w-md">From everyday inkjet units to high-volume laser hardware — choose the type that fits your workflow.</p>
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">Shop by Type</span>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Find the right printer</h2>
+              <p className="text-slate-500 mt-2 max-w-md">From everyday inkjet to high-volume laser — choose the category that fits your workflow.</p>
             </div>
             <Button asChild variant="outline" className="rounded-full self-start md:self-end border-slate-200">
               <Link href="/shop">View All <ArrowRight className="ml-2 w-4 h-4" /></Link>
@@ -182,7 +185,7 @@ export default function Home() {
                   loading="lazy"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-white via-white/90 to-transparent">
-                  <div className="font-semibold text-slate-900 text-sm md:text-base leading-tight">{c.name}</div>
+                  <h3 className="font-semibold text-slate-900 text-sm md:text-base leading-tight">{c.name}</h3>
                   <div className="mt-1 flex items-center gap-1 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                     Shop now <ArrowRight className="w-3 h-3" />
                   </div>
@@ -203,28 +206,28 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">No Confusion</h3>
               <p className="text-slate-500 text-sm">We provide simple descriptions without any jargon.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <MousePointer2 className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">No Pressure</h3>
               <p className="text-slate-500 text-sm">Explore at your own pace with total confidence.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <Heart className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">Calm Experience</h3>
               <p className="text-slate-500 text-sm">A distraction-free interface for a smooth journey.</p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
@@ -242,7 +245,7 @@ export default function Home() {
             Ready To Explore?
           </span>
           <h2 className="mt-4 text-[38px] font-semibold tracking-tight md:text-[54px]">
-            Get Started With My Printer Master
+            Get Started With Laser Print Guide
           </h2>
           <p className="mx-auto mt-5 max-w-[620px] text-[16px] leading-8 text-slate-400">
             You're welcome to explore our collection and find what works best for you.

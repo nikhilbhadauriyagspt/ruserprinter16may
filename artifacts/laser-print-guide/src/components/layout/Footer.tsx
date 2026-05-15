@@ -22,17 +22,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10 mb-14">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Link href="/" className="flex items-center gap-2 mb-6" aria-label="My Printer Master Home">
-              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="My Printer Master" className="h-11 w-auto" />
+            <Link href="/" className="flex items-center gap-2 mb-6" aria-label="Laser Print Guide Home">
+              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="Laser Print Guide" className="h-11 w-auto" />
             </Link>
             <p className="text-slate-500 mb-8 max-w-sm leading-relaxed text-sm">
               We help small businesses and home offices get printing right without the usual hassle. Whether it's everyday documents or important work, you can count on clean, sharp results every time you print.
             </p>
             <div>
               <div className="text-slate-900 font-semibold mb-3 text-sm uppercase tracking-wider">Email Us</div>
-              <a href="mailto:info@myprintermaster.co" className="inline-flex items-center gap-3 text-slate-600 hover:text-primary transition-colors text-sm" aria-label="Send us an email at info@myprintermaster.co">
+              <a href="mailto:info@laserprintguide.co" className="inline-flex items-center gap-3 text-slate-600 hover:text-primary transition-colors text-sm" aria-label="Send us an email at info@laserprintguide.co">
                 <span className="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-primary"><Mail className="w-4 h-4" aria-hidden="true" /></span>
-                info@myprintermaster.co
+                info@laserprintguide.co
               </a>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-400">
-          <p>© {new Date().getFullYear()} My Printer Master. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Laser Print Guide. All rights reserved.</p>
           <div className="flex gap-x-6 gap-y-2 flex-wrap justify-center">
             <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms of Service</Link>
