@@ -1,0 +1,269 @@
+# MASTER RECREATION PROMPT: LASER PRINT GUIDE (ECOMMERCE)
+
+Act as a Senior Full-Stack Architect. Your task is to build a complete, production-ready eCommerce clone of the "Laser Print Guide" website. This site is a high-end, professional platform for selling printers and accessories, featuring a clean "Bento-grid" design, glassmorphism, and a robust backend integration.
+
+---
+
+## 1. PROJECT VISION & TECH STACK
+- **Framework:** React 19 (Vite)
+- **Styling:** Tailwind CSS 4.0+ (using Vanilla CSS for custom glassmorphism)
+- **State:** Context API (Cart & Global State)
+- **Navigation:** React Router Dom v7
+- **Animations:** Framer Motion (for transitions and drawers)
+- **Icons:** Lucide React
+- **Payments:** PayPal Integration (@paypal/react-paypal-js)
+- **Typography:** 'Plus Jakarta Sans' (Import via Google Fonts)
+- **Base Color Palette:** 
+  - Primary: #1d4ed8 (Blue-700)
+  - Background: #f7f8fb (Slate-50)
+  - Dark: #0f172a (Slate-950)
+  - Glass: rgba(255, 255, 255, 0.95) with backdrop-blur-xl
+
+---
+
+## 2. BACKEND API SPECIFICATION
+**Base URL:** `https://api.inklivo.shop/public`
+
+### Endpoints:
+1.  **GET `/categories`**: Returns nested category objects (`id`, `name`, `slug`, `children[]`).
+2.  **GET `/brands`**: Returns brand list (`id`, `name`, `slug`).
+3.  **GET `/products?limit=1000`**: Returns all products.
+    - Fields: `id`, `name`, `slug`, `price`, `original_price`, `description`, `images` (JSON/Array), `category_id`, `category_slug`, `brand_name`.
+4.  **GET `/products/{slug}`**: Single product details.
+5.  **POST `/orders`**: Place order. Payload: `{ email, firstName, lastName, address, city, zipCode, phone, paymentMethod, total, items[], payment_details }`.
+6.  **POST `/newsletter`**: Newsletter subscription. Payload: `{ email }`.
+7.  **POST `/contacts`**: Contact form. Payload: `{ name, email, phone, subject, message }`.
+8.  **Admin Stats:** `GET /admin/stats` (Requires Bearer Token).
+
+---
+
+## 3. CORE LOGIC & FILTERING RULES (STRICT)
+
+### Data Filtering (Catalog Scope)
+- **Exclude Categories:** Filter out any category related to "Laptops", "Computers", "PCs", or "Notebooks".
+- **Exclude Products:** Do NOT display products that contain "laptop", "macbook", "notebook", "chromebook" in their name.
+- **Brand Exclusions:** Filter out brands like "Brother" and "Xerox". 
+- **Showcase Focus:** Featured sections should ONLY focus on: **HP, Canon, Epson, and Lexmark**.
+- **Prohibited Labels:** Do NOT use terms like "Authorized Dealer" or "Expert Support" anywhere in the UI. Focus on being a "Product Guide".
+
+### GlobalContext.jsx Logic
+- Fetch Categories and first 20 Products on mount. (Do NOT call the `/brands` API).
+- **Strict Filtering:** Apply the filters above before setting state.
+- Background-fetch remaining products (limit=1000) with same filters.
+
+### CartContext.jsx Logic
+- Handle `addToCart`, `removeFromCart`, `toggleWishlist`.
+- Persist state in `localStorage`.
+- Provide `cartCount` and `cartTotal`.
+
+---
+
+## 4. EXACT STATIC PAGE CONTENT (USE VERBATIM)
+
+You must use the EXACT text below for the static pages. Do not use Lorem Ipsum.
+
+### A. About Us Page (`/about`)
+**Hero Section:**
+- Subtitle: "About Us"
+- Title: "Making Printing Simpler For Everyone"
+- Description: "Laser Print Guide is built around a simple goal — to make choosing the right printing products easier. We keep things clear, straightforward, and easy to explore."
+- Badges: "Clear Choices", "Straightforward Info" (**Strict Rule:** Do NOT use 'Authorized Dealer' or 'Expert Support' labels).
+- CTA: "Explore Products"
+
+**What We Do Section:**
+- Subtitle: "What We Do"
+- Title: "Honest And Simple Product Choices"
+- Description: "We keep our approach honest and minimal, focusing on what truly matters to you."
+- Bullet Points:
+  1. "List products that are useful for everyday needs"
+  2. "Present information in a clear and easy-to-read format"
+  3. "Avoid unnecessary complexity and keep things simple"
+
+**Why People Choose Us Section:**
+- Subtitle: "Why People Choose Us"
+- Title: "A Calm Shopping Experience"
+- Grid Items:
+  1. "No Confusion" - "We provide simple descriptions without any jargon."
+  2. "No Pressure" - "Explore at your own pace with total confidence."
+  3. "Calm Experience" - "A distraction-free interface for a smooth journey."
+  4. "Dependable" - "Practical solutions designed for everyday use."
+
+**Our Origin Section:**
+- Subtitle: "Our Origin"
+- Title: "Why Laser Print Guide Started"
+- Paragraph 1: "We started Laser Print Guide because we noticed how frustrating it was to find a reliable printer online. It had become a maze of confusing words, complicated descriptions, and options that just didn't last."
+- Paragraph 2: "Our goal was simple: build a store where honesty comes first. A place where a small business owner or a student could find a dependable tool without feeling pressured or overwhelmed."
+- Quote Block: "“We don't just ship boxes; we provide the tools that help your ideas come to life on paper.”"
+
+**Our Approach Section:**
+- Subtitle: "Our Approach"
+- Title: "Simple, Useful And Easy To Explore"
+- Grid Items:
+  1. "Clear Choices" - "Curated selection to save your time."
+  2. "Straight Forward" - "Honest information without any noise."
+  3. "Smooth Experience" - "Distraction-free browsing experience."
+- Bottom Text ("Who It's For"): "Laser Print Guide is designed for individuals and small businesses who want practical and dependable printing solutions for everyday use."
+
+**Footer CTA Section:**
+- Subtitle: "Ready To Explore?"
+- Title: "Get Started With Laser Print Guide"
+- Description: "You’re welcome to explore our collection and find what works best for you."
+- Buttons: "Start Shopping", "Contact Us"
+
+### B. FAQ Page (`/faq`)
+**Hero Section:**
+- Subtitle: "FAQ"
+- Title: "Common Questions"
+- Description: "Find instant answers about orders, shipping, and printer setups. We've organized everything to make your experience smoother."
+
+**Accordion Categories & Questions:**
+1. **Orders & Purchasing**
+   - Q: "How do I place an order for a printer?" | A: "To place an order, select your preferred printer, add it to your cart, and complete checkout with your shipping and payment details."
+   - Q: "Is an account required to shop?" | A: "No, you can place an order as a guest. Creating an account simply makes it easier to manage future orders and preferences."
+   - Q: "How can I check my order status?" | A: "After placing your order, you will receive confirmation details. You can also use the order tracking option available on the website."
+   - Q: "What payment methods are supported?" | A: "We accept major payment methods through secure checkout so your transactions remain protected and dependable."
+2. **Shipping & Delivery**
+   - Q: "Where do you ship to?" | A: "We currently offer shipping across the United States for both residential and business locations."
+   - Q: "How long does delivery take?" | A: "Standard delivery usually takes around 3 to 7 business days depending on your location and order details."
+   - Q: "How can I track my shipment?" | A: "Once your order is dispatched, tracking details are shared so you can follow the shipment status."
+3. **Printer Information**
+   - Q: "Are all printers original and new?" | A: "Yes, we provide brand-new printers in original packaging so customers receive products in proper condition."
+   - Q: "Is there a warranty provided?" | A: "Most printers include manufacturer warranty coverage. Warranty details may vary depending on the specific product model."
+   - Q: "Are original ink and toner available?" | A: "Yes, we also offer printing supplies for many of the models available in our catalog."
+4. **Returns & Support**
+   - Q: "What is your return policy?" | A: "Unused products in original condition may be returned within the allowed return window, subject to our return policy terms."
+   - Q: "What if the machine arrives with issues?" | A: "If your order arrives damaged or has a problem, please contact support as soon as possible so we can guide you through the next steps."
+
+### C. Contact Page (`/contact`)
+**Hero Section:**
+- Subtitle: "Contact"
+- Title: "We’re Here to Help."
+- Description: "Got a question about a printer? Need help with an order? Our team is ready to provide the answers you need."
+
+**Contact Info Section:**
+- Title: "Get in Touch"
+- Description: "We value clear communication and fast responses. Reach out through any of these channels and we'll get back to you as soon as possible."
+- Email: "info@laserprintguide.co"
+
+**Form Section:**
+- Subtitle: "Send a Message"
+- Title: "Tell Us What You Need"
+- Description: "Fill out the form below and our team will be in touch shortly."
+- Fields: Full Name, Email Address, Phone (Optional), Subject (Options: General Inquiry, Product Question, Order Support, Technical Help), Your Message.
+- Success Message: "Message Sent! Thank you for reaching out. We have received your message and will respond within 24 hours."
+
+---
+
+## 5. EXACT LEGAL & POLICY PAGE CONTENT (USE VERBATIM)
+
+### A. Privacy Policy (`/privacy-policy`)
+**Title:** Privacy Policy
+**Subtitle:** Your privacy is our priority. Learn how we handle and protect your personal information with transparency and care.
+**Last Updated:** May 14, 2026
+**Text:** 
+"This Privacy Notice for Laser Print Guide ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you: Visit our website at http://laserprintguide.co/ or any website of ours that links to this Privacy Notice. Use Printers, Consumables & Accessories. Laser Print Guide is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands. Engage with us in other related ways, including any marketing or events. Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. Contact us at info@laserprintguide.co.
+
+**1. What information do we collect?**
+We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products, or otherwise contact us. The personal information we collect may include: names, phone numbers, email addresses, billing addresses, debit/credit card numbers. We do not process sensitive information. Payment Data: All payment data is handled and stored by PayPal, Visa and Master Card.
+
+**2. How do we process your information?**
+We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We process the personal information to facilitate account creation, deliver services, and fulfill and manage your orders.
+
+**3. Do we use cookies and other tracking technologies?**
+We may use cookies and similar tracking technologies (like web beacons and pixels) to gather information when you interact with our Services.
+
+**4. How long do we keep your information?**
+We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.
+
+**5. How can you contact us about this notice?**
+If you have questions or comments about this notice, you may email us at info@laserprintguide.co."
+
+### B. Terms & Conditions (`/terms-and-conditions`)
+**Title:** Terms & Conditions
+**Subtitle:** Read our legal terms and conditions for using our services.
+**Last Updated:** May 14, 2026
+**Text:**
+"**AGREEMENT TO OUR LEGAL TERMS**
+We are Laser Print Guide. We operate the website http://laserprintguide.co/ (the "Site"). You can contact us by email at info@laserprintguide.co. These Legal Terms constitute a legally binding agreement made between you and Laser Print Guide. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY. The Services are intended for users who are at least 18 years old.
+
+**1. INTELLECTUAL PROPERTY RIGHTS**
+We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein.
+
+**2. PURCHASES AND PAYMENT**
+We accept the following forms of payment: Visa, Mastercard, PayPal. You agree to provide current, complete, and accurate purchase and account information for all purchases made via the Services. All payments shall be in US dollars.
+
+**3. PROHIBITED ACTIVITIES**
+You may not access or use the Services for any purpose other than that for which we make the Services available. As a user of the Services, you agree not to: Systematically retrieve data to create a database. Trick, defraud, or mislead us. Circumvent security-related features. Engage in unauthorized framing of or linking to the Services. Upload or transmit viruses or Trojans.
+
+**4. GOVERNING LAW**
+These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of Virginia applicable to agreements made and to be entirely performed within the State of Virginia.
+
+**5. CONTACT US**
+Email: info@laserprintguide.co"
+
+### C. Return Policy (`/return-policy`)
+**Title:** Return Policy
+**Subtitle:** Read our return and refund policy for your purchases.
+**Last Updated:** May 14, 2026
+**Text:**
+"**RETURNS**
+All returns must be postmarked within seven (7) days of the purchase date. All returned items must be in new and unused condition, with all original tags and labels attached.
+
+**RETURN PROCESS**
+To return an item, please email customer service at info@laserprintguide.co. Place the item securely in its original packaging and include your proof of purchase, then contact us for return instructions. Return shipping charges will be paid or reimbursed by us.
+
+**REFUNDS**
+After receiving your return and inspecting the condition of your item, we will process your return. Please allow at least seven (7) days from the receipt of your item to process your return. Refunds may take 1-2 billing cycles to appear on your credit card statement.
+
+**EXCEPTIONS**
+For defective or damaged products, please contact us at the contact details below to arrange a refund or exchange.
+
+**QUESTIONS**
+If you have any questions concerning our return policy, please contact us at info@laserprintguide.co."
+
+### D. Shipping Policy (`/shipping-policy`)
+**Title:** Shipping policy
+**Subtitle:** Read our shipping and delivery options, timeframes, and policies.
+**Last Updated:** May 14, 2026
+**Text:**
+"This shipping & delivery policy is part of our terms and conditions. Please carefully review our shipping & delivery policy when purchasing our products. This policy will apply to any order you place with us.
+
+**What are my shipping delivery options?**
+We offer various shipping options. In some cases a third-party supplier may be managing our inventory and will be responsible for shipping your products. We offer free standard shipping on all orders.
+
+**Do you deliver internationally?**
+We do not offer international shipping at this time. We deliver to all addresses within the country.
+
+**What happens if my order is delayed?**
+If delivery is delayed for any reason we will let you know as soon as possible and will advise you of a revised estimated date for delivery.
+
+**How can you contact us about this policy?**
+Email: info@laserprintguide.co"
+
+---
+
+## 6. DIRECTORY & ASSET STRUCTURE
+```text
+/public
+  /products        <-- All product images (e.g., image_1.png)
+  /category        <-- Category thumbs (e.g., laser-printers.jpg)
+  /brands          <-- logos (e.g., hp.png, canon.png)
+  /logo            <-- logo.png
+/src
+  /assets          <-- Static UI assets
+  /components      <-- UI, Header, Footer, Hero, SEO
+  /context         <-- GlobalContext, CartContext
+  /layouts         <-- AdminLayout, PolicyLayout
+  /pages           <-- Home, Shop, ProductDetail, Checkout, FAQ, Contact, About
+    /policies      <-- PrivacyPolicy, TermsAndConditions, ReturnPolicy, ShippingPolicy
+    /admin         <-- Dashboard, ProductManager, OrderManager
+  App.jsx          <-- Routes & Layout Wrappers
+  config.js        <-- API_BASE_URL export
+```
+
+---
+
+## 7. FINAL INSTRUCTION
+Recreate this entire site with pixel-perfection. Use the exact text provided in Section 4 and 5 for all pages to ensure no placeholders (Lorem Ipsum) are used. Ensure all API calls use the live backend. All images should follow the `/public/` path structure. Use Framer Motion for all modal/drawer transitions. Ensure the site is 100% responsive for Mobile, Tablet, and Desktop.
+
+**GOAL:** A fully functional, SEO-optimized, and aesthetically polished ecommerce store ready for production.
