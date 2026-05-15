@@ -31,6 +31,9 @@ export default function Home() {
           src={`${import.meta.env.BASE_URL}hero-banner.png`}
           alt="Print More, Achieve More — High Performance Printers for Every Business"
           className="block w-full h-auto"
+          width="1920"
+          height="600"
+          fetchPriority="high"
         />
       </section>
 
@@ -41,7 +44,14 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-slate-100 aspect-[4/5] flex items-center justify-center p-6">
-                  <img src={`${import.meta.env.BASE_URL}category/laser-printers.jpg`} alt="Laser Printers" className="w-full h-full object-contain" />
+                  <img 
+                    src={`${import.meta.env.BASE_URL}category/laser-printers.jpg`} 
+                    alt="Laser Printers" 
+                    className="w-full h-full object-contain" 
+                    width="240"
+                    height="300"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="rounded-2xl bg-primary/95 text-white p-6 aspect-square flex flex-col justify-between">
                   <div className="text-4xl font-bold">200+</div>
@@ -54,7 +64,14 @@ export default function Home() {
                   <div className="text-sm font-medium opacity-80">Printer categories — from inkjet and laser to thermal and large format.</div>
                 </div>
                 <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-orange-100 aspect-[4/5] flex items-center justify-center p-6">
-                  <img src={`${import.meta.env.BASE_URL}category/inkjet-printers.jpg`} alt="Inkjet Printers" className="w-full h-full object-contain" />
+                  <img 
+                    src={`${import.meta.env.BASE_URL}category/inkjet-printers.jpg`} 
+                    alt="Inkjet Printers" 
+                    className="w-full h-full object-contain" 
+                    width="240"
+                    height="300"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>
@@ -160,6 +177,9 @@ export default function Home() {
                   alt={c.name}
                   onError={(e) => (e.currentTarget.style.display = 'none')}
                   className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500"
+                  width="300"
+                  height="300"
+                  loading="lazy"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-white via-white/90 to-transparent">
                   <div className="font-semibold text-slate-900 text-sm md:text-base leading-tight">{c.name}</div>

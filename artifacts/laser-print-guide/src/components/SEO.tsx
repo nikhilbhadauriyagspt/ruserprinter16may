@@ -5,7 +5,7 @@ interface SEOProps {
   description?: string;
 }
 
-const DEFAULT_DESCRIPTION = "Shop high-performance printers, genuine ink cartridges, and professional toners at My Printer Master. We offer expert curation, fast checkout, and free shipping on all orders.";
+const DEFAULT_DESCRIPTION = "Shop premium printers, genuine ink cartridges, and professional toners at My Printer Master. Expert curation and free shipping on all orders.";
 
 export function SEO({ title, description = DEFAULT_DESCRIPTION }: SEOProps) {
   useEffect(() => {
