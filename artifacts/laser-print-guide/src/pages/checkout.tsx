@@ -222,6 +222,7 @@ export default function Checkout() {
                           clientId: PAYPAL_CLIENT_ID,
                           currency: "USD",
                           intent: "capture",
+                          components: "buttons",
                         }}
                       >
                         <PayPalButtons
