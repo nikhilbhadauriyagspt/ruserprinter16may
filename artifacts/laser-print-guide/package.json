@@ -75,6 +75,6 @@
     "zod": "catalog:"
   },
   "dependencies": {
-    "@paypal/react-paypal-js": "^9.2.0"
+    "@paypal/paypal-js": "^9.7.0"
   }
 }
