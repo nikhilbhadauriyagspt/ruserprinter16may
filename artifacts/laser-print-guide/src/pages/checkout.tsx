@@ -85,9 +85,7 @@ export default function Checkout() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error("Order failed", err);
-      setOrderNumber(`ORD-${Math.floor(Math.random() * 1000000)}`);
-      clearCart();
-      setStep(3);
+      throw err;
     }
   };
 
@@ -224,6 +222,7 @@ export default function Checkout() {
                           clientId: PAYPAL_CLIENT_ID,
                           currency: "USD",
                           intent: "capture",
+                          components: "buttons",
                         }}
                       >
                         <PayPalButtons
@@ -242,11 +241,10 @@ export default function Checkout() {
                               ],
                             })
                           }
-                          onApprove={(_data, actions) => {
-                            if (!actions.order) return Promise.resolve();
-                            return actions.order.capture().then((details) => {
-                              finalizeOrder(details);
-                            });
+                          onApprove={async (_data, actions) => {
+                            if (!actions.order) return;
+                            const details = await actions.order.capture();
+                            await finalizeOrder(details);
                           }}
                           onError={(err) => {
                             console.error("PayPal error", err);
