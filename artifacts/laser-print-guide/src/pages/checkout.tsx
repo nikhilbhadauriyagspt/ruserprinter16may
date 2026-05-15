@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { CheckCircle2, Lock, ArrowRight } from "lucide-react";
-import { PayPalCheckoutButtons } from "@/components/PayPalCheckoutButtons";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { SEO } from "@/components/SEO";
 import { useCart } from "@/contexts/CartContext";
 import { useCreateOrder } from "@/lib/api";
@@ -217,12 +217,40 @@ export default function Checkout() {
 
                   {paymentMethod === "paypal" ? (
                     <div className="border border-slate-200 rounded-xl p-4 bg-white">
-                      <PayPalCheckoutButtons
-                        clientId={PAYPAL_CLIENT_ID}
-                        amount={total}
-                        disabled={createOrder.isPending}
-                        onApprove={(details) => finalizeOrder(details)}
-                      />
+                      <PayPalScriptProvider
+                        options={{
+                          clientId: PAYPAL_CLIENT_ID,
+                          currency: "USD",
+                          intent: "capture",
+                        }}
+                      >
+                        <PayPalButtons
+                          style={{ layout: "vertical", shape: "pill", label: "pay" }}
+                          disabled={createOrder.isPending}
+                          createOrder={(_data, actions) =>
+                            actions.order.create({
+                              intent: "CAPTURE",
+                              purchase_units: [
+                                {
+                                  amount: {
+                                    currency_code: "USD",
+                                    value: Number(total || 0).toFixed(2),
+                                  },
+                                },
+                              ],
+                            })
+                          }
+                          onApprove={async (_data, actions) => {
+                            if (!actions.order) return;
+                            const details = await actions.order.capture();
+                            await finalizeOrder(details);
+                          }}
+                          onError={(err) => {
+                            console.error("PayPal error", err);
+                            alert("Payment could not be completed. Please try again.");
+                          }}
+                        />
+                      </PayPalScriptProvider>
                     </div>
                   ) : (
                     <Button
