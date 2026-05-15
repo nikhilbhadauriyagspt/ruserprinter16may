@@ -25,80 +25,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <SEO title="Laser Print Guide — Printers & Accessories" />
       
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/40 px-4 py-16 md:px-8 lg:px-10 lg:py-24">
-        <div className="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-blue-100/40 blur-3xl" />
-        <div className="relative mx-auto max-w-[1200px] grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-primary">
-              <BadgeCheck className="w-3.5 h-3.5" /> Your Everyday Printer Store
-            </span>
-            <h1 className="mt-5 text-[40px] font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-[60px]">
-              The Right Printer<br />For Every Workspace
-            </h1>
-            <p className="mx-auto lg:mx-0 mt-6 max-w-[540px] text-[16px] md:text-lg leading-7 text-slate-600">
-              Inkjet, Laser, Supertank and more — explore a carefully curated range of printers and accessories, all in one calm shopping experience.
-            </p>
-            <div className="mt-9 flex flex-wrap justify-center lg:justify-start gap-3">
-              <Button asChild size="lg" className="rounded-full px-7 text-base shadow-md shadow-primary/20">
-                <Link href="/shop">Shop All Printers <ArrowRight className="ml-2 w-4 h-4" /></Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-7 text-base border-slate-300 bg-white/70 backdrop-blur-sm">
-                <Link href="/about">About Us</Link>
-              </Button>
-            </div>
-            <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm text-slate-500">
-              <div className="flex items-center gap-2"><Truck className="w-4 h-4 text-primary" /> Fast Shipping</div>
-              <div className="flex items-center gap-2"><RefreshCw className="w-4 h-4 text-primary" /> Easy Returns</div>
-              <div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-primary" /> Secure Checkout</div>
-            </div>
-          </div>
-
-          <div className="relative hidden lg:block">
-            <div className="grid grid-cols-2 gap-4 max-w-[520px] mx-auto">
-              <Link href="/category/laser-printers" className="group relative aspect-[3/4] rounded-[28px] overflow-hidden bg-gradient-to-br from-blue-50 to-slate-100 shadow-xl shadow-slate-300/40 border border-white">
-                <img src={`${import.meta.env.BASE_URL}category/laser-printers.jpg`} alt="Laser Printers" className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-slate-950/80 to-transparent text-white">
-                  <div className="text-[10px] font-semibold uppercase tracking-[0.16em] opacity-80">Bestseller</div>
-                  <div className="text-sm font-semibold mt-0.5">Laser Printers</div>
-                </div>
-              </Link>
-              <div className="space-y-4 pt-10">
-                <Link href="/category/inkjet-printers" className="group relative block aspect-square rounded-[28px] overflow-hidden bg-gradient-to-br from-amber-50 to-orange-100 shadow-xl shadow-slate-300/40 border border-white">
-                  <img src={`${import.meta.env.BASE_URL}category/inkjet-printers.jpg`} alt="Inkjet Printers" className="absolute inset-0 w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent text-white">
-                    <div className="text-sm font-semibold">Inkjet</div>
-                  </div>
-                </Link>
-                <Link href="/category/all-in-one-printers" className="group relative block aspect-square rounded-[28px] overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-100 shadow-xl shadow-slate-300/40 border border-white">
-                  <img src={`${import.meta.env.BASE_URL}category/all-in-one-printers.jpg`} alt="All-In-One Printers" className="absolute inset-0 w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent text-white">
-                    <div className="text-sm font-semibold">All-In-One</div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className="absolute -top-2 -left-6 bg-white rounded-2xl shadow-xl shadow-slate-300/40 px-5 py-3 flex items-center gap-3 border border-slate-100">
-              <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                <Truck className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500">Quick</div>
-                <div className="text-sm font-semibold text-slate-900">Free Shipping</div>
-              </div>
-            </div>
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl shadow-slate-300/40 px-5 py-3 flex items-center gap-3 border border-slate-100">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <RefreshCw className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500">No Hassle</div>
-                <div className="text-sm font-semibold text-slate-900">Easy Returns</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Hero Banner */}
+      <section className="bg-white">
+        <img
+          src={`${import.meta.env.BASE_URL}hero-banner.png`}
+          alt="Print More, Achieve More — High Performance Printers for Every Business"
+          className="block w-full h-auto"
+        />
       </section>
 
       {/* About Section */}
