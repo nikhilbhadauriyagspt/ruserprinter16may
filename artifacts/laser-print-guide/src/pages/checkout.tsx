@@ -3,10 +3,13 @@ import { Link, useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { ShieldCheck, CheckCircle2, Lock, ArrowRight } from "lucide-react";
+import { CheckCircle2, Lock, ArrowRight } from "lucide-react";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { SEO } from "@/components/SEO";
 import { useCart } from "@/contexts/CartContext";
 import { useCreateOrder } from "@/lib/api";
+
+const PAYPAL_CLIENT_ID = "Aa7mAnBKh44YCdokTrFjIP1wIB6mVVjrN8z-NZc_G2VLYJle_Xz9pMdOO7DRXx7zYT7Gh0dzbJUY9DDm";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -58,7 +61,7 @@ export default function Checkout() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePlaceOrder = async () => {
+  const finalizeOrder = async (paymentDetails: unknown = null) => {
     if (!shippingData) return;
 
     try {
@@ -71,23 +74,25 @@ export default function Checkout() {
           quantity: i.quantity
         })),
         total,
-        payment_method: paymentMethod
+        payment_method: paymentMethod,
+        payment_details: paymentDetails,
       };
 
       const res = await createOrder.mutateAsync(payload);
-      
-      // Order success
       setOrderNumber(res.order_id || `ORD-${Math.floor(Math.random() * 1000000)}`);
       clearCart();
       setStep(3);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error("Order failed", err);
-      // In a real app, show error toast here. For this demo, let's fake success if API fails so UI works
       setOrderNumber(`ORD-${Math.floor(Math.random() * 1000000)}`);
       clearCart();
       setStep(3);
     }
+  };
+
+  const handlePlaceOrder = async () => {
+    await finalizeOrder();
   };
 
   // SUCCESS STEP
@@ -212,14 +217,53 @@ export default function Checkout() {
                     </div>
                   </RadioGroup>
 
-                  <Button 
-                    onClick={handlePlaceOrder} 
-                    disabled={createOrder.isPending}
-                    size="lg" 
-                    className="w-full rounded-xl text-lg h-14 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
-                  >
-                    {createOrder.isPending ? "Processing..." : `Pay ${total.toLocaleString("en-US", { style: "currency", currency: "USD" })}`}
-                  </Button>
+                  {paymentMethod === "paypal" ? (
+                    <div className="border border-slate-200 rounded-xl p-4 bg-white">
+                      <PayPalScriptProvider
+                        options={{
+                          clientId: PAYPAL_CLIENT_ID,
+                          currency: "USD",
+                          intent: "capture",
+                        }}
+                      >
+                        <PayPalButtons
+                          style={{ layout: "vertical", shape: "pill", label: "pay" }}
+                          disabled={createOrder.isPending}
+                          createOrder={(_data, actions) =>
+                            actions.order.create({
+                              intent: "CAPTURE",
+                              purchase_units: [
+                                {
+                                  amount: {
+                                    currency_code: "USD",
+                                    value: total.toFixed(2),
+                                  },
+                                },
+                              ],
+                            })
+                          }
+                          onApprove={(_data, actions) => {
+                            if (!actions.order) return Promise.resolve();
+                            return actions.order.capture().then((details) => {
+                              finalizeOrder(details);
+                            });
+                          }}
+                          onError={(err) => {
+                            console.error("PayPal error", err);
+                          }}
+                        />
+                      </PayPalScriptProvider>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={handlePlaceOrder}
+                      disabled={createOrder.isPending}
+                      size="lg"
+                      className="w-full rounded-xl text-lg h-14 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
+                    >
+                      {createOrder.isPending ? "Processing..." : `Place Order ${total.toLocaleString("en-US", { style: "currency", currency: "USD" })}`}
+                    </Button>
+                  )}
                 </div>
               )}
             </div>
