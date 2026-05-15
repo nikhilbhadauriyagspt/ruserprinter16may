@@ -79,7 +79,6 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="p-5 flex flex-col flex-1">
-        <div className="text-xs font-mono text-slate-500 mb-2">{product.brand_name}</div>
         <h3 className="font-semibold text-slate-900 leading-tight mb-2 line-clamp-2">{product.name}</h3>
         
         <div className="mt-auto flex items-end justify-between">

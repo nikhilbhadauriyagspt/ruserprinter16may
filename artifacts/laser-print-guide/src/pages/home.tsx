@@ -8,13 +8,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 
-const BRANDS = [
-  { name: "HP", slug: "hp", logo: "hp.png" },
-  { name: "Canon", slug: "canon", logo: "canon.png" },
-  { name: "Epson", slug: "epson", logo: "espon.png" },
-  { name: "Lexmark", slug: "lexmark", logo: "Lexmark.png" },
-];
-
 export default function Home() {
   const { data: featuredProducts, isLoading: isLoadingProducts } = useFeaturedProducts();
   const { data: categories } = useCategories();
@@ -51,20 +44,6 @@ export default function Home() {
             <Button asChild size="lg" className="rounded-full px-8 text-base">
               <Link href="/shop">Explore Products <ArrowRight className="ml-2 w-4 h-4" /></Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Shop by Brand */}
-      <section className="py-16 border-t border-slate-100 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <h2 className="text-center text-sm font-bold tracking-[0.18em] text-slate-400 uppercase mb-10">Shop by Brand</h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {BRANDS.map(b => (
-              <Link key={b.slug} href={`/brand/${b.slug}`} className="opacity-70 hover:opacity-100 transition-opacity">
-                <img src={`${import.meta.env.BASE_URL}brands/${b.logo}`} alt={b.name} className="h-10 md:h-12 w-auto object-contain" />
-              </Link>
-            ))}
           </div>
         </div>
       </section>

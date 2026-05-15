@@ -85,29 +85,6 @@ export default function Shop({ categorySlug, brandSlug }: ShopProps) {
         </ul>
       </div>
 
-      <div>
-        <h4 className="font-semibold text-slate-900 mb-4 text-sm uppercase tracking-wider">Brands</h4>
-        <ul className="space-y-3">
-          <li>
-            <Link 
-              href="/shop" 
-              className={`text-sm hover:text-primary transition-colors ${!brandSlug ? 'text-primary font-medium' : 'text-slate-600'}`}
-            >
-              All Brands
-            </Link>
-          </li>
-          {brands?.map(b => (
-            <li key={b.id}>
-              <Link 
-                href={`/brand/${b.slug}`} 
-                className={`text-sm hover:text-primary transition-colors ${brandSlug === b.slug ? 'text-primary font-medium' : 'text-slate-600'}`}
-              >
-                {b.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 

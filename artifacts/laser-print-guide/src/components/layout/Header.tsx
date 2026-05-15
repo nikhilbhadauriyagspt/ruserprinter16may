@@ -3,12 +3,11 @@ import { Link, useLocation } from "wouter";
 import { ShoppingCart, Heart, Search, Menu, X, Printer } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
-import { useCategories, useBrands, useProducts } from "@/lib/api";
+import { useProducts } from "@/lib/api";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,8 +18,6 @@ export function Header() {
   const { totalItems } = useCart();
   const { items: wishlistItems } = useWishlist();
 
-  const { data: categories } = useCategories();
-  const { data: brands } = useBrands();
   
   // Quick search
   const { data: searchResults } = useProducts(searchQuery.length > 2 ? { search: searchQuery, limit: 5 } : undefined);
@@ -64,25 +61,8 @@ export function Header() {
                   <nav className="flex flex-col gap-6 mt-8 text-lg font-medium text-slate-800">
                     <Link href="/">Home</Link>
                     <Link href="/shop">Shop All</Link>
-                    
-                    <div className="flex flex-col gap-2">
-                      <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">Categories</span>
-                      {categories?.map((c) => (
-                        <Link key={c.id} href={`/category/${c.slug}`} className="text-slate-600 font-normal ml-2">
-                          {c.name}
-                        </Link>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">Brands</span>
-                      {brands?.map((b) => (
-                        <Link key={b.id} href={`/brand/${b.slug}`} className="text-slate-600 font-normal ml-2">
-                          {b.name}
-                        </Link>
-                      ))}
-                    </div>
-                    
+                    <Link href="/about">About</Link>
+                    <Link href="/faq">FAQ</Link>
                     <Link href="/contact">Contact</Link>
                   </nav>
                 </SheetContent>
@@ -98,34 +78,8 @@ export function Header() {
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
               <Link href="/shop" className="hover:text-primary transition-colors">Shop</Link>
-              
-              <DropdownMenu>
-                <DropdownMenuTrigger className="hover:text-primary transition-colors outline-none cursor-pointer">
-                  Categories
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48 bg-white/90 backdrop-blur-xl border-slate-200">
-                  {categories?.map((c) => (
-                    <DropdownMenuItem key={c.id} asChild className="cursor-pointer hover:bg-slate-100">
-                      <Link href={`/category/${c.slug}`} className="w-full">{c.name}</Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger className="hover:text-primary transition-colors outline-none cursor-pointer">
-                  Brands
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48 bg-white/90 backdrop-blur-xl border-slate-200">
-                  {brands?.map((b) => (
-                    <DropdownMenuItem key={b.id} asChild className="cursor-pointer hover:bg-slate-100">
-                      <Link href={`/brand/${b.slug}`} className="w-full">{b.name}</Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-              
               <Link href="/about" className="hover:text-primary transition-colors">About</Link>
+              <Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link>
               <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
             </nav>
 
