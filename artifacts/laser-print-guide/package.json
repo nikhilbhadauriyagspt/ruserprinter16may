@@ -76,6 +76,6 @@
   },
   "dependencies": {
     "@paypal/paypal-js": "^9.7.0",
-    "@paypal/react-paypal-js": "^9.2.0"
+    "@paypal/react-paypal-js": "^8.7.0"
   }
 }
