@@ -7,9 +7,8 @@ import { Button } from "@/components/ui/button";
 export default function Cart() {
   const { items, updateQuantity, removeFromCart, subtotal, totalItems } = useCart();
 
-  const tax = subtotal * 0.08; // 8% placeholder tax
-  const shipping = subtotal > 500 ? 0 : 49;
-  const total = subtotal + tax + shipping;
+  const shipping = 0;
+  const total = subtotal;
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
@@ -105,14 +104,8 @@ export default function Cart() {
                   <span className="font-medium text-slate-900">{subtotal.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Estimated Tax (8%)</span>
-                  <span className="font-medium text-slate-900">{tax.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span>
-                </div>
-                <div className="flex justify-between">
                   <span>Freight Shipping</span>
-                  <span className="font-medium text-slate-900">
-                    {shipping === 0 ? <span className="text-green-600">Free</span> : shipping.toLocaleString("en-US", { style: "currency", currency: "USD" })}
-                  </span>
+                  <span className="font-medium text-green-600">Free</span>
                 </div>
               </div>
 
@@ -123,9 +116,6 @@ export default function Cart() {
                     {total.toLocaleString("en-US", { style: "currency", currency: "USD" })}
                   </span>
                 </div>
-                {shipping > 0 && (
-                  <p className="text-xs text-slate-500 mt-2 text-right">Add {(500 - subtotal).toLocaleString("en-US", { style: "currency", currency: "USD" })} more for free freight.</p>
-                )}
               </div>
 
               <Button asChild size="lg" className="w-full rounded-xl text-base h-14 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20">

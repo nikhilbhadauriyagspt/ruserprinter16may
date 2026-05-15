@@ -39,9 +39,9 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("paypal");
   const [orderNumber, setOrderNumber] = useState("");
 
-  const tax = subtotal * 0.08;
-  const shippingCost = subtotal > 500 ? 0 : 49;
-  const total = subtotal + tax + shippingCost;
+  const tax = 0;
+  const shippingCost = 0;
+  const total = subtotal;
 
   const form = useForm<ShippingFormValues>({
     resolver: zodResolver(shippingSchema),
@@ -267,12 +267,8 @@ export default function Checkout() {
                   <span className="font-medium text-slate-900">{subtotal.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Tax</span>
-                  <span className="font-medium text-slate-900">{tax.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span>
-                </div>
-                <div className="flex justify-between">
                   <span>Shipping</span>
-                  <span className="font-medium text-slate-900">{shippingCost === 0 ? "Free" : shippingCost.toLocaleString("en-US", { style: "currency", currency: "USD" })}</span>
+                  <span className="font-medium text-green-600">Free</span>
                 </div>
               </div>
 
