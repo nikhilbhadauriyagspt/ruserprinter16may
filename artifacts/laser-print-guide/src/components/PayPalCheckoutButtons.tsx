@@ -12,15 +12,25 @@ type Props = {
 let paypalPromise: Promise<PayPalNamespace | null> | null = null;
 let loadedClientId: string | null = null;
 
-function getPayPal(clientId: string) {
+function loadPayPalSafe(clientId: string): Promise<PayPalNamespace | null> {
   if (!paypalPromise || loadedClientId !== clientId) {
     loadedClientId = clientId;
-    paypalPromise = loadScript({
-      clientId,
-      currency: "USD",
-      intent: "capture",
-      components: "buttons",
-    });
+    paypalPromise = (async () => {
+      try {
+        const paypal = await loadScript({
+          clientId,
+          currency: "USD",
+          intent: "capture",
+          components: "buttons",
+        });
+        return paypal;
+      } catch (err) {
+        console.error("PayPal SDK load failed", err);
+        paypalPromise = null;
+        loadedClientId = null;
+        return null;
+      }
+    })();
   }
   return paypalPromise;
 }
@@ -37,6 +47,7 @@ export function PayPalCheckoutButtons({
   const onApproveRef = useRef(onApprove);
   const onErrorRef = useRef(onError);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     amountRef.current = amount;
@@ -52,16 +63,18 @@ export function PayPalCheckoutButtons({
 
   useEffect(() => {
     let cancelled = false;
-    let cleanup: (() => void) | null = null;
+    let buttonsInstance: { close: () => void } | null = null;
 
-    getPayPal(clientId)
-      .then((paypal) => {
-        if (cancelled || !paypal || !paypal.Buttons || !containerRef.current) {
-          if (!paypal || !paypal.Buttons) {
-            setError("PayPal failed to load. Please refresh and try again.");
-          }
+    const mount = async () => {
+      try {
+        const paypal = await loadPayPalSafe(clientId);
+        if (cancelled) return;
+        if (!paypal || !paypal.Buttons || !containerRef.current) {
+          setError("PayPal failed to load. Please refresh and try again.");
+          setLoading(false);
           return;
         }
+
         const buttons = paypal.Buttons({
           style: { layout: "vertical", shape: "pill", label: "pay" },
           createOrder: (_data, actions) =>
@@ -77,49 +90,89 @@ export function PayPalCheckoutButtons({
               ],
             }),
           onApprove: async (_data, actions) => {
-            if (!actions.order) return;
-            const details = await actions.order.capture();
-            await onApproveRef.current(details);
+            try {
+              if (!actions.order) return;
+              const details = await actions.order.capture();
+              await onApproveRef.current(details);
+            } catch (err) {
+              console.error("PayPal onApprove failed", err);
+              setError("Payment could not be completed. Please try again.");
+            }
           },
           onError: (err) => {
             console.error("PayPal error", err);
-            onErrorRef.current?.(err);
+            try {
+              onErrorRef.current?.(err);
+            } catch {
+              // noop
+            }
           },
         });
 
-        if (!buttons.isEligible()) {
+        let eligible = true;
+        try {
+          eligible = buttons.isEligible();
+        } catch (err) {
+          console.error("PayPal isEligible failed", err);
+          eligible = false;
+        }
+        if (!eligible) {
           setError("PayPal is not available in this context.");
+          setLoading(false);
           return;
         }
 
-        buttons.render(containerRef.current).catch((err) => {
+        try {
+          await buttons.render(containerRef.current);
+        } catch (err) {
           console.error("Failed to render PayPal Buttons", err);
-          setError("Could not display PayPal buttons.");
-        });
+          if (!cancelled) setError("Could not display PayPal buttons.");
+          return;
+        }
 
-        cleanup = () => {
+        if (cancelled) {
           try {
             buttons.close();
           } catch {
             // noop
           }
-        };
-      })
-      .catch((err) => {
-        console.error("Failed to load PayPal SDK", err);
-        setError("Could not load PayPal. Please try again later.");
-      });
+          return;
+        }
+
+        buttonsInstance = buttons;
+        setLoading(false);
+      } catch (err) {
+        console.error("PayPal mount failed", err);
+        if (!cancelled) {
+          setError("Could not load PayPal. Please try again later.");
+          setLoading(false);
+        }
+      }
+    };
+
+    mount();
 
     return () => {
       cancelled = true;
-      if (cleanup) cleanup();
+      if (buttonsInstance) {
+        try {
+          buttonsInstance.close();
+        } catch {
+          // noop
+        }
+      }
     };
   }, [clientId]);
 
   return (
-    <div className="relative">
+    <div className="relative min-h-[80px]">
       {disabled && (
         <div className="absolute inset-0 bg-white/60 z-10 cursor-not-allowed" />
+      )}
+      {loading && !error && (
+        <div className="text-sm text-slate-500 text-center py-4">
+          Loading PayPal…
+        </div>
       )}
       <div ref={containerRef} />
       {error && (
