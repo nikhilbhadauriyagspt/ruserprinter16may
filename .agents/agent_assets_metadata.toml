@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "zV6yMNR-1BRj3oK0OEe-q"
+uri = "file://artifacts/laser-print-guide/src/assets/printer1.png"
+type = "image"
+title = "Industrial laser printer"
+
+[[generated]]
+id = "bSVUVIBBLjlGfFevYtgkC"
+uri = "file://artifacts/laser-print-guide/src/assets/printer2.png"
+type = "image"
+title = "Professional office printer"
+
+[[generated]]
+id = "idThDEgCjIfKP9W8zmQ4o"
+uri = "file://artifacts/laser-print-guide/src/assets/toner1.png"
+type = "image"
+title = "Laser toner cartridge"
+
+[[generated]]
+id = "lsPsYzwMwBqug3u-bfpi7"
+uri = "file://artifacts/laser-print-guide/src/assets/toner2.png"
+type = "image"
+title = "Cyan toner cartridge"
+
+[[generated]]
+id = "RbiJdoCxkwo8qXg1uAtx4"
+uri = "file://artifacts/laser-print-guide/src/assets/paper1.png"
+type = "image"
+title = "Printer paper stack"

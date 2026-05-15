@@ -1,0 +1,148 @@
+# COMPREHENSIVE WEBSITE RECREATION PROMPT: Laser Print Guide
+
+Act as an expert Full-stack React Developer. Your objective is to recreate a high-performance, visually stunning eCommerce website called "Laser Print Guide" specializing in printers and printing accessories. The site must be built with a modern "Bento-style" grid aesthetic, glassmorphism effects, and a professional blue/slate color palette.
+
+---
+
+## 1. TECH STACK & ARCHITECTURE
+- **Frontend Framework:** React 19 (Vite)
+- **Styling:** Tailwind CSS 4.0+ (using Vanilla CSS where needed)
+- **Navigation:** React-Router-Dom v7
+- **Icons:** Lucide React
+- **Animations:** Framer Motion
+- **Carousels/Sliders:** Swiper or Embla Carousel
+- **Payments:** @paypal/react-paypal-js
+- **State Management:** Context API (GlobalContext for data, CartContext for shopping functionality)
+- **Typography:** Plus Jakarta Sans (Main font)
+
+---
+
+## 2. BACKEND API INTEGRATION
+**Base URL:** `https://api.inklivo.shop/public`
+
+**Required Endpoints:**
+1. **Categories:** `GET /categories` -> Returns status and nested category data.
+2. **Brands:** `GET /brands` -> Returns status and brand lists.
+3. **Products:** `GET /products?limit=1000` -> Returns full product list.
+   - Support query params: `category`, `search`, `sort`, `limit`.
+4. **Single Product:** `GET /products/{slug}` -> Returns detailed product object.
+5. **Orders:** `POST /orders` -> Payload includes user info, cart items, total, and payment details.
+
+**Data Mapping Logic:**
+- Products have fields: `id`, `name`, `slug`, `price`, `original_price`, `description`, `images` (JSON string/array), `category_id`, `brand_name`.
+- Image Handling: Images are stored in `public/products/`. Paths in API might be like `products/image_1.png`. Logic should handle both full URLs and local paths, including `-300x300.png` thumbnails for performance.
+
+**Sample API Responses:**
+
+*Categories (`/categories`):*
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Printers",
+      "slug": "printers",
+      "children": [
+        { "id": 2, "name": "Laser Printers", "slug": "laser-printers" }
+      ]
+    }
+  ]
+}
+```
+
+*Products (`/products`):*
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 101,
+      "name": "HP LaserJet Pro M404dn",
+      "slug": "hp-laserjet-pro-m404dn",
+      "price": "299.00",
+      "original_price": "349.00",
+      "description": "High-performance monochrome laser printer...",
+      "images": "[\"products/image_1.png\", \"products/image_2.png\"]",
+      "category_name": "Laser Printers",
+      "brand_name": "HP"
+    }
+  ]
+}
+```
+
+---
+
+## 3. PROJECT FOLDER STRUCTURE
+```text
+/public
+  /products        <-- All product images
+  /category        <-- Category thumbnail images
+  /brands          <-- Brand logos
+  /logo            <-- Main logo and favicon
+/src
+  /assets          <-- Static UI assets
+  /components
+    /ui            <-- Shadcn-like primitive components
+    Header.jsx     <-- Sticky nav with Search & Cart
+    Footer.jsx     <-- Deep footer with policy links
+    Hero.jsx       <-- Animated hero with Top Sellers
+    SEO.jsx        <-- Dynamic Meta tag manager
+    CartDrawer.jsx <-- Sliding side cart
+    ... (ProductShowcase, Features, SupportCTA)
+  /context
+    GlobalContext.jsx <-- Centralized API data fetching
+    CartContext.jsx   <-- Cart/Wishlist/LocalStorage logic
+  /layouts
+    AdminLayout.jsx
+  /pages
+    Home.jsx, Shop.jsx, ProductDetail.jsx, Checkout.jsx
+    Cart.jsx, Wishlist.jsx, FAQ.jsx, Contact.jsx
+    /policies (Privacy, Terms, Return, Shipping)
+    /admin (Dashboard, Managers)
+  App.jsx          <-- Routing and Layout Wrappers
+  config.js        <-- API_BASE_URL
+```
+
+---
+
+## 4. KEY FUNCTIONALITIES
+
+### A. Global State (Context)
+- **GlobalContext:** Fetches Categories, Brands, and Products on mount. Provides data globally to avoid redundant API calls.
+- **CartContext:** Handles `addToCart`, `removeFromCart`, `toggleWishlist`. Persists state in `localStorage`. Includes `cartTotal` calculation.
+
+### B. Navigation & Routing
+- **Dynamic Shop:** `/shop` shows all products. `/category/:category` or `/brand/:brand` filters the view.
+- **Search:** Real-time search filter across the product database.
+- **Admin Panel:** Protected routes for `/admin` including Dashboard, Product Manager, and Order Manager.
+
+### C. Pages Detail
+- **Home:** Hero section with animated text, featured category grid, "Best Sellers" showcase, support banners, and a "Personalized Guidance" CTA.
+- **Shop:** Sidebar category/brand filters, Sort options (Newest, Price Low-High, Price High-Low), Mobile-responsive filter drawer.
+- **Product Detail:** Image gallery with thumbnail switching, Quantity selector, "Add to Cart" with visual feedback, Related Products section.
+- **Checkout:** Two-step process (Shipping Details -> Payment). Integration with PayPal (using Client ID) and "Cash on Delivery" option. Order confirmation screen.
+
+---
+
+## 5. DESIGN GUIDELINES (CSS/UI)
+- **Palette:** 
+  - Primary: Blue (#1d4ed8 / blue-700)
+  - Background: Off-white (#f7f8fb / slate-50)
+  - Text: Deep Slate (#0f172a / slate-950)
+- **Aesthetics:** 
+  - Use `aspect-square` for product images in grids.
+  - Cards should have soft shadows: `shadow-[0_10px_35px_rgba(15,23,42,0.06)]`.
+  - Buttons: Pill-shaped or sharp rectangular based on context, high contrast (black background for primary).
+  - Animations: Use Framer Motion `AnimatePresence` for smooth page transitions and drawer openings.
+
+---
+
+## 6. ASSETS & CONTENT
+- Replicate the content found on pages like FAQ, About, and Policies accurately.
+- Use placeholders for images if not provided, following the naming convention `public/products/image_X.png`.
+- Ensure semantic HTML (Article tags for products, Header/Main/Footer structure).
+
+---
+
+**GOAL:** Deliver a fully functional, production-ready clone with all routes, state management, and API integrations working seamlessly.

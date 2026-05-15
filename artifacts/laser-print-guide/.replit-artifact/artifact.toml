@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Laser Print Guide"
+version = "1.0.0"
+id = "artifacts/laser-print-guide"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18380
+
+[services.development]
+run = "pnpm --filter @workspace/laser-print-guide run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/laser-print-guide", "run", "build" ]
+publicDir = "artifacts/laser-print-guide/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18380"
+BASE_PATH = "/"
