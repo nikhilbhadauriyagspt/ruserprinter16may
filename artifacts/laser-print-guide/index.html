@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1d4ed8" />
 
     <title>My Printer Master — Printers, Cartridges & Printing Accessories</title>
@@ -11,6 +11,11 @@
     <meta name="author" content="My Printer Master" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href="https://myprintermaster.co/" />
+    <link rel="llms" href="/llms.txt" />
+
+    <!-- Preloads -->
+    <link rel="preload" href="/logo/logo.png" as="image" fetchpriority="high" />
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/logo/faviconn_1778878111492.png" />
@@ -83,6 +88,9 @@
     </script>
   </head>
   <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 rounded-md z-[100]">
+      Skip to content
+    </a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

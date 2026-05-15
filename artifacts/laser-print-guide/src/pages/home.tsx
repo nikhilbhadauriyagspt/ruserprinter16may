@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ChevronRight, ArrowRight, ShieldCheck, MousePointer2, Heart, CheckCircle2, Truck, RefreshCw, Headphones, BadgeCheck } from "lucide-react";
+import { ChevronRight, ArrowRight, ShieldCheck, MousePointer2, Heart, CheckCircle2 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { useFeaturedProducts, useCategories } from "@/lib/api";
 import { ProductCard } from "@/components/ProductCard";
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <SEO title="My Printer Master — Printers & Accessories" />
+      <SEO title="My Printer Master — Premium Printers & Accessories" />
       
       {/* Hero Banner */}
       <section className="bg-white">
@@ -59,15 +59,15 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">About My Printer Master</span>
-              <h2 className="mt-4 text-[34px] md:text-[44px] font-semibold tracking-tight text-slate-950 leading-[1.1]">
-                Printing made simple,<br />from home to office.
-              </h2>
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">About Our Store</span>
+              <h1 className="mt-4 text-[34px] md:text-[44px] font-semibold tracking-tight text-slate-950 leading-[1.1]">
+                Quality printing solutions,<br />from home to office.
+              </h1>
               <p className="mt-6 text-slate-600 leading-7 text-[16px]">
-                We started My Printer Master because choosing a printer shouldn't feel overwhelming. Whether you're setting up a home study, a small business, or a busy office — we help you cut through the jargon and find the model that just works.
+                We started My Printer Master because choosing the right equipment shouldn't feel overwhelming. Whether you're setting up a home study, a small business, or a busy workspace — we help you cut through the jargon and find the solution that just works.
               </p>
               <p className="mt-4 text-slate-600 leading-7 text-[16px]">
-                Every product on our shelves is curated, clearly described, and backed by friendly support. No pressure, no fine print — just honest help with your next print job.
+                Every item in our collection is curated, clearly described, and backed by professional support. No pressure, no fine print — just honest help with your next hardware setup.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 <div className="flex items-start gap-3">
@@ -106,10 +106,10 @@ export default function Home() {
               <p className="text-slate-500">Carefully curated selection for your everyday needs.</p>
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" size="icon" onClick={scrollPrev} className="rounded-full border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white shadow-sm">
+              <Button variant="outline" size="icon" onClick={scrollPrev} className="rounded-full border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white shadow-sm" aria-label="Previous products">
                 <ChevronRight className="w-5 h-5 rotate-180" />
               </Button>
-              <Button variant="outline" size="icon" onClick={scrollNext} className="rounded-full border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white shadow-sm">
+              <Button variant="outline" size="icon" onClick={scrollNext} className="rounded-full border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white shadow-sm" aria-label="Next products">
                 <ChevronRight className="w-5 h-5" />
               </Button>
             </div>
@@ -144,9 +144,9 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">Shop by Type</span>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Find the right printer</h2>
-              <p className="text-slate-500 mt-2 max-w-md">From everyday inkjet to high-volume laser — choose the category that fits your workflow.</p>
+              <span className="text-[13px] font-semibold uppercase tracking-[0.18em] text-primary">Shop by Category</span>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Find the right device</h2>
+              <p className="text-slate-500 mt-2 max-w-md">From everyday inkjet units to high-volume laser hardware — choose the type that fits your workflow.</p>
             </div>
             <Button asChild variant="outline" className="rounded-full self-start md:self-end border-slate-200">
               <Link href="/shop">View All <ArrowRight className="ml-2 w-4 h-4" /></Link>
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {categories?.slice(0, 8).map(c => (
-              <Link key={c.id} href={`/category/${c.slug}`} className="group relative rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 aspect-square border border-slate-100 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300">
+              <Link key={c.id} href={`/category/${c.slug}`} className="group relative rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 aspect-square border border-slate-100 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300" aria-label={`Shop ${c.name}`}>
                 <img
                   src={`${import.meta.env.BASE_URL}category/${c.slug}.jpg`}
                   alt={c.name}
@@ -187,28 +187,28 @@ export default function Home() {
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900 mb-2">No Confusion</h4>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">No Confusion</h3>
               <p className="text-slate-500 text-sm">We provide simple descriptions without any jargon.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <MousePointer2 className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900 mb-2">No Pressure</h4>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">No Pressure</h3>
               <p className="text-slate-500 text-sm">Explore at your own pace with total confidence.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <Heart className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900 mb-2">Calm Experience</h4>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Calm Experience</h3>
               <p className="text-slate-500 text-sm">A distraction-free interface for a smooth journey.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900 mb-2">Dependable</h4>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Dependable</h3>
               <p className="text-slate-500 text-sm">Practical solutions designed for everyday use.</p>
             </div>
           </div>

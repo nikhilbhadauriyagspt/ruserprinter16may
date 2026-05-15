@@ -5,9 +5,23 @@ interface SEOProps {
   description?: string;
 }
 
-export function SEO({ title, description = "My Printer Master — Your curated print-equipment specialist." }: SEOProps) {
+const DEFAULT_DESCRIPTION = "Shop high-performance printers, genuine ink cartridges, and professional toners at My Printer Master. We offer expert curation, fast checkout, and free shipping on all orders.";
+
+export function SEO({ title, description = DEFAULT_DESCRIPTION }: SEOProps) {
   useEffect(() => {
-    document.title = `${title} | My Printer Master`;
+    // Ensure title is between 30-60 characters
+    let displayTitle = title;
+    if (!displayTitle.includes("My Printer Master") && displayTitle.length < 40) {
+      displayTitle = `${displayTitle} | My Printer Master`;
+    }
+    
+    // Trim if still too long
+    if (displayTitle.length > 60) {
+      displayTitle = displayTitle.substring(0, 57) + "...";
+    }
+
+    document.title = displayTitle;
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", description);

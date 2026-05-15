@@ -63,7 +63,7 @@ export function Header() {
             <div className="md:hidden flex items-center">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-slate-700">
+                  <Button variant="ghost" size="icon" className="text-slate-700" aria-label="Open menu">
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
@@ -95,7 +95,7 @@ export function Header() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="My Printer Master" className="h-10 w-auto" />
+              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="Laser Print Guide" className="h-10 w-auto" />
             </Link>
 
             {/* Desktop Nav */}
@@ -118,6 +118,7 @@ export function Header() {
                     className="pl-9 bg-slate-100/50 border-slate-200 focus-visible:ring-primary/20 rounded-full"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    aria-label="Search products"
                   />
                 </form>
                 {searchQuery.length > 2 && searchResults && searchResults.length > 0 && (
@@ -138,7 +139,10 @@ export function Header() {
               {isAuthenticated ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <button className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-sm font-medium text-slate-700">
+                    <button 
+                      className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-sm font-medium text-slate-700"
+                      aria-label="User profile and settings"
+                    >
                       <span className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">
                         {user?.name?.charAt(0).toUpperCase() || "U"}
                       </span>
@@ -164,13 +168,14 @@ export function Header() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Link href="/login" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+                <Link href="/login" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-slate-600 hover:text-primary transition-colors" aria-label="Sign in">
                   <User className="w-4 h-4" /> Sign In
                 </Link>
               )}
 
-              <Link href="/wishlist" className="relative p-2 text-slate-600 hover:text-primary transition-colors">
+              <Link href="/wishlist" className="relative p-2 text-slate-600 hover:text-primary transition-colors" aria-label="Wishlist">
                 <Heart className="w-5 h-5" />
+                <span className="sr-only">Wishlist</span>
                 {wishlistItems.length > 0 && (
                   <span className="absolute top-0 right-0 w-4 h-4 bg-primary text-white text-[10px] font-bold flex items-center justify-center rounded-full">
                     {wishlistItems.length}
@@ -181,8 +186,10 @@ export function Header() {
               <button 
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-2 text-slate-600 hover:text-primary transition-colors"
+                aria-label={`Open shopping cart. ${totalItems} items in cart`}
               >
                 <ShoppingCart className="w-5 h-5" />
+                <span className="sr-only">Shopping Cart</span>
                 {totalItems > 0 && (
                   <span className="absolute top-0 right-0 w-4 h-4 bg-primary text-white text-[10px] font-bold flex items-center justify-center rounded-full">
                     {totalItems}
