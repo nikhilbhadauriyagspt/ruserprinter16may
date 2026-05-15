@@ -5,9 +5,9 @@ interface SEOProps {
   description?: string;
 }
 
-export function SEO({ title, description = "Laser Print Guide — Your curated print-equipment specialist." }: SEOProps) {
+export function SEO({ title, description = "My Printer Master — Your curated print-equipment specialist." }: SEOProps) {
   useEffect(() => {
-    document.title = `${title} | Laser Print Guide`;
+    document.title = `${title} | My Printer Master`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", description);

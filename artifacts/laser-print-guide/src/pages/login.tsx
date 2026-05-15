@@ -47,7 +47,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-slate-50 via-white to-blue-50/40 py-16 px-4 flex items-center justify-center">
-      <SEO title="Sign In — Laser Print Guide" />
+      <SEO title="Sign In — My Printer Master" />
       <div className="w-full max-w-[1100px] grid lg:grid-cols-2 gap-10 items-center">
         <div className="hidden lg:block">
           <div className="relative aspect-[5/6] rounded-[32px] overflow-hidden bg-gradient-to-br from-blue-50 to-slate-100 shadow-2xl shadow-slate-300/40 border border-white">

@@ -1,6 +1,6 @@
-# COMPREHENSIVE WEBSITE RECREATION PROMPT: Laser Print Guide
+# COMPREHENSIVE WEBSITE RECREATION PROMPT: My Printer Master
 
-Act as an expert Full-stack React Developer. Your objective is to recreate a high-performance, visually stunning eCommerce website called "Laser Print Guide" specializing in printers and printing accessories. The site must be built with a modern "Bento-style" grid aesthetic, glassmorphism effects, and a professional blue/slate color palette.
+Act as an expert Full-stack React Developer. Your objective is to recreate a high-performance, visually stunning eCommerce website called "My Printer Master" specializing in printers and printing accessories. The site must be built with a modern "Bento-style" grid aesthetic, glassmorphism effects, and a professional blue/slate color palette.
 
 ---
 

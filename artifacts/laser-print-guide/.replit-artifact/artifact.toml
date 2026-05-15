@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "Laser Print Guide"
+title = "My Printer Master"
 version = "1.0.0"
 id = "artifacts/laser-print-guide"
 router = "path"

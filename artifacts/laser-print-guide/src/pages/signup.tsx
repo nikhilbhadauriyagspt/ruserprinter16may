@@ -39,7 +39,7 @@ export default function Signup() {
       try {
         const user = await loginMutation.mutateAsync({ email: data.email, password: data.password });
         login(user);
-        toast({ title: "Welcome to Laser Print Guide!", description: "Your account has been created." });
+        toast({ title: "Welcome to My Printer Master!", description: "Your account has been created." });
         setLocation("/");
       } catch {
         toast({ title: "Account created", description: "Please sign in to continue." });
@@ -62,7 +62,7 @@ export default function Signup() {
 
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gradient-to-br from-slate-50 via-white to-blue-50/40 py-16 px-4 flex items-center justify-center">
-      <SEO title="Create Account — Laser Print Guide" />
+      <SEO title="Create Account — My Printer Master" />
       <div className="w-full max-w-[1100px] grid lg:grid-cols-2 gap-10 items-center">
         <div className="hidden lg:block">
           <div className="relative aspect-[5/6] rounded-[32px] overflow-hidden bg-gradient-to-br from-amber-50 to-orange-100 shadow-2xl shadow-slate-300/40 border border-white">

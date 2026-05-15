@@ -91,7 +91,7 @@ export default function TrackOrder() {
 
   return (
     <div className="bg-slate-50 min-h-[calc(100vh-80px)] py-12 md:py-16 px-4">
-      <SEO title="Track Your Order — Laser Print Guide" />
+      <SEO title="Track Your Order — My Printer Master" />
       <div className="max-w-[1000px] mx-auto">
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-primary">

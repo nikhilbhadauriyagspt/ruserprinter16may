@@ -42,7 +42,7 @@ export default function ShippingPolicy() {
       <h2>How can you contact us about this policy?</h2>
       <p>If you have any further questions or comments, you may contact us by:</p>
       <ul>
-        <li>Email: <a href="mailto:info@laserprintguide.co">info@laserprintguide.co</a></li>
+        <li>Email: <a href="mailto:info@myprintermaster.co">info@myprintermaster.co</a></li>
         <li>Online form: <Link href="/contact">Contact us</Link></li>
       </ul>
     </PolicyLayout>

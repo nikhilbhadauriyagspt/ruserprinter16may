@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <div className="bg-white text-slate-950">
       <SEO
-        title="Contact Us | Laser Print Guide Support"
+        title="Contact Us | My Printer Master Support"
         description="Connect with our professional support team for detailed printer inquiries and order assistance. We are here to help you find the perfect printing solution."
       />
 
@@ -92,10 +92,10 @@ export default function Contact() {
                     Email Us
                   </p>
                   <a
-                    href="mailto:info@laserprintguide.co"
+                    href="mailto:info@myprintermaster.co"
                     className="mt-2 block text-[16px] font-semibold text-slate-950 hover:text-primary transition-colors"
                   >
-                    info@laserprintguide.co
+                    info@myprintermaster.co
                   </a>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import { PolicyLayout } from "@/components/layout/PolicyLayout";
 import { Link } from "wouter";
 
 export default function PrivacyPolicy() {
-  const email = "info@laserprintguide.co";
+  const email = "info@myprintermaster.co";
   
   return (
     <PolicyLayout
@@ -11,11 +11,11 @@ export default function PrivacyPolicy() {
       lastUpdated="May 14, 2026"
     >
       <p>
-        This Privacy Notice for Laser Print Guide ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:
+        This Privacy Notice for My Printer Master ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:
       </p>
       <ul>
-        <li>Visit our website at <a href="http://laserprintguide.co/">http://laserprintguide.co/</a> or any website of ours that links to this Privacy Notice</li>
-        <li>Use Printers, Consumables & Accessories. Laser Print Guide is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands.</li>
+        <li>Visit our website at <a href="http://myprintermaster.co/">http://myprintermaster.co/</a> or any website of ours that links to this Privacy Notice</li>
+        <li>Use Printers, Consumables & Accessories. My Printer Master is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands.</li>
         <li>Engage with us in other related ways, including any marketing or events</li>
       </ul>
       <p>
@@ -332,7 +332,7 @@ export default function PrivacyPolicy() {
         <li>Right to know the categories of personal data that we have sold or shared (as permitted by applicable law, including the privacy law in Minnesota)</li>
         <li>Right to opt out of the processing of your personal data for profiling in furtherance of decisions that produce legal or similarly significant effects (as permitted by applicable law, including the privacy law in Minnesota)</li>
       </ul>
-      <p>To exercise any of these rights, please contact us by <a href={`mailto:${email}`}>{email}</a> or by visiting <Link href="/contact">https://laserprintguide.co/contact</Link>.</p>
+      <p>To exercise any of these rights, please contact us by <a href={`mailto:${email}`}>{email}</a> or by visiting <Link href="/contact">https://myprintermaster.co/contact</Link>.</p>
 
       <h3>Appeals</h3>
       <p>If we decline to take action regarding your request, you may appeal our decision by emailing us at <a href={`mailto:${email}`}>{email}</a>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</p>
@@ -346,7 +346,7 @@ export default function PrivacyPolicy() {
       <h2>13. How can you contact us about this notice?</h2>
       <p>If you have questions or comments about this notice, you may email us at <a href={`mailto:${email}`}>{email}</a> or contact us by post at:</p>
       <p>
-        <strong>Laser Print Guide</strong>
+        <strong>My Printer Master</strong>
       </p>
 
       <h2>14. How can you review, update, or delete the data we collect from you?</h2>

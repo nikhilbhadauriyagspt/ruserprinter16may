@@ -9,7 +9,7 @@ export default function CookiePolicy() {
       lastUpdated="May 14, 2026"
     >
       <p className="lead">
-        This cookie policy explains how Laser Print Guide ("company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://laserprintguide.co/">https://laserprintguide.co/</a>
+        This cookie policy explains how My Printer Master ("company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://myprintermaster.co/">https://myprintermaster.co/</a>
       </p>
       <p>
         This policy should be read together with our <Link href="/privacy-policy" className="text-primary hover:underline font-semibold">Privacy Policy</Link> and <Link href="/terms-and-conditions" className="text-primary hover:underline font-semibold">Terms & Conditions</Link>.
@@ -78,7 +78,7 @@ export default function CookiePolicy() {
         We do not sell personal information. If you have any concerns regarding how your data is shared for advertising, you may exercise your rights by:
       </p>
       <ul>
-        <li>Emailing: <a href="mailto:info@laserprintguide.co">info@laserprintguide.co</a></li>
+        <li>Emailing: <a href="mailto:info@myprintermaster.co">info@myprintermaster.co</a></li>
         <li>Visiting: <Link href="/contact">Contact us</Link></li>
       </ul>
 
@@ -86,9 +86,9 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this cookie policy, please contact us:</p>
       <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 mt-6 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-1">
-          <p className="text-slate-900">Laser Print Guide</p>
+          <p className="text-slate-900">My Printer Master</p>
           <p className="pt-4 text-slate-900 font-bold">
-            <a href="mailto:info@laserprintguide.co" className="hover:text-primary transition-colors">info@laserprintguide.co</a>
+            <a href="mailto:info@myprintermaster.co" className="hover:text-primary transition-colors">info@myprintermaster.co</a>
           </p>
         </address>
       </div>

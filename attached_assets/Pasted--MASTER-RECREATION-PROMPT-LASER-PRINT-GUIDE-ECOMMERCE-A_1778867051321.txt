@@ -1,6 +1,6 @@
-# MASTER RECREATION PROMPT: LASER PRINT GUIDE (ECOMMERCE)
+# MASTER RECREATION PROMPT: My Printer Master (ECOMMERCE)
 
-Act as a Senior Full-Stack Architect. Your task is to build a complete, production-ready eCommerce clone of the "Laser Print Guide" website. This site is a high-end, professional platform for selling printers and accessories, featuring a clean "Bento-grid" design, glassmorphism, and a robust backend integration.
+Act as a Senior Full-Stack Architect. Your task is to build a complete, production-ready eCommerce clone of the "My Printer Master" website. This site is a high-end, professional platform for selling printers and accessories, featuring a clean "Bento-grid" design, glassmorphism, and a robust backend integration.
 
 ---
 
@@ -66,7 +66,7 @@ You must use the EXACT text below for the static pages. Do not use Lorem Ipsum.
 **Hero Section:**
 - Subtitle: "About Us"
 - Title: "Making Printing Simpler For Everyone"
-- Description: "Laser Print Guide is built around a simple goal — to make choosing the right printing products easier. We keep things clear, straightforward, and easy to explore."
+- Description: "My Printer Master is built around a simple goal — to make choosing the right printing products easier. We keep things clear, straightforward, and easy to explore."
 - Badges: "Clear Choices", "Straightforward Info" (**Strict Rule:** Do NOT use 'Authorized Dealer' or 'Expert Support' labels).
 - CTA: "Explore Products"
 
@@ -90,8 +90,8 @@ You must use the EXACT text below for the static pages. Do not use Lorem Ipsum.
 
 **Our Origin Section:**
 - Subtitle: "Our Origin"
-- Title: "Why Laser Print Guide Started"
-- Paragraph 1: "We started Laser Print Guide because we noticed how frustrating it was to find a reliable printer online. It had become a maze of confusing words, complicated descriptions, and options that just didn't last."
+- Title: "Why My Printer Master Started"
+- Paragraph 1: "We started My Printer Master because we noticed how frustrating it was to find a reliable printer online. It had become a maze of confusing words, complicated descriptions, and options that just didn't last."
 - Paragraph 2: "Our goal was simple: build a store where honesty comes first. A place where a small business owner or a student could find a dependable tool without feeling pressured or overwhelmed."
 - Quote Block: "“We don't just ship boxes; we provide the tools that help your ideas come to life on paper.”"
 
@@ -102,11 +102,11 @@ You must use the EXACT text below for the static pages. Do not use Lorem Ipsum.
   1. "Clear Choices" - "Curated selection to save your time."
   2. "Straight Forward" - "Honest information without any noise."
   3. "Smooth Experience" - "Distraction-free browsing experience."
-- Bottom Text ("Who It's For"): "Laser Print Guide is designed for individuals and small businesses who want practical and dependable printing solutions for everyday use."
+- Bottom Text ("Who It's For"): "My Printer Master is designed for individuals and small businesses who want practical and dependable printing solutions for everyday use."
 
 **Footer CTA Section:**
 - Subtitle: "Ready To Explore?"
-- Title: "Get Started With Laser Print Guide"
+- Title: "Get Started With My Printer Master"
 - Description: "You’re welcome to explore our collection and find what works best for you."
 - Buttons: "Start Shopping", "Contact Us"
 
@@ -143,7 +143,7 @@ You must use the EXACT text below for the static pages. Do not use Lorem Ipsum.
 **Contact Info Section:**
 - Title: "Get in Touch"
 - Description: "We value clear communication and fast responses. Reach out through any of these channels and we'll get back to you as soon as possible."
-- Email: "info@laserprintguide.co"
+- Email: "info@myprintermaster.co"
 
 **Form Section:**
 - Subtitle: "Send a Message"
@@ -161,7 +161,7 @@ You must use the EXACT text below for the static pages. Do not use Lorem Ipsum.
 **Subtitle:** Your privacy is our priority. Learn how we handle and protect your personal information with transparency and care.
 **Last Updated:** May 14, 2026
 **Text:** 
-"This Privacy Notice for Laser Print Guide ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you: Visit our website at http://laserprintguide.co/ or any website of ours that links to this Privacy Notice. Use Printers, Consumables & Accessories. Laser Print Guide is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands. Engage with us in other related ways, including any marketing or events. Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. Contact us at info@laserprintguide.co.
+"This Privacy Notice for My Printer Master ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you: Visit our website at http://myprintermaster.co/ or any website of ours that links to this Privacy Notice. Use Printers, Consumables & Accessories. My Printer Master is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands. Engage with us in other related ways, including any marketing or events. Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. Contact us at info@myprintermaster.co.
 
 **1. What information do we collect?**
 We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products, or otherwise contact us. The personal information we collect may include: names, phone numbers, email addresses, billing addresses, debit/credit card numbers. We do not process sensitive information. Payment Data: All payment data is handled and stored by PayPal, Visa and Master Card.
@@ -176,7 +176,7 @@ We may use cookies and similar tracking technologies (like web beacons and pixel
 We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.
 
 **5. How can you contact us about this notice?**
-If you have questions or comments about this notice, you may email us at info@laserprintguide.co."
+If you have questions or comments about this notice, you may email us at info@myprintermaster.co."
 
 ### B. Terms & Conditions (`/terms-and-conditions`)
 **Title:** Terms & Conditions
@@ -184,7 +184,7 @@ If you have questions or comments about this notice, you may email us at info@la
 **Last Updated:** May 14, 2026
 **Text:**
 "**AGREEMENT TO OUR LEGAL TERMS**
-We are Laser Print Guide. We operate the website http://laserprintguide.co/ (the "Site"). You can contact us by email at info@laserprintguide.co. These Legal Terms constitute a legally binding agreement made between you and Laser Print Guide. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY. The Services are intended for users who are at least 18 years old.
+We are My Printer Master. We operate the website http://myprintermaster.co/ (the "Site"). You can contact us by email at info@myprintermaster.co. These Legal Terms constitute a legally binding agreement made between you and My Printer Master. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY. The Services are intended for users who are at least 18 years old.
 
 **1. INTELLECTUAL PROPERTY RIGHTS**
 We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein.
@@ -199,7 +199,7 @@ You may not access or use the Services for any purpose other than that for which
 These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of Virginia applicable to agreements made and to be entirely performed within the State of Virginia.
 
 **5. CONTACT US**
-Email: info@laserprintguide.co"
+Email: info@myprintermaster.co"
 
 ### C. Return Policy (`/return-policy`)
 **Title:** Return Policy
@@ -210,7 +210,7 @@ Email: info@laserprintguide.co"
 All returns must be postmarked within seven (7) days of the purchase date. All returned items must be in new and unused condition, with all original tags and labels attached.
 
 **RETURN PROCESS**
-To return an item, please email customer service at info@laserprintguide.co. Place the item securely in its original packaging and include your proof of purchase, then contact us for return instructions. Return shipping charges will be paid or reimbursed by us.
+To return an item, please email customer service at info@myprintermaster.co. Place the item securely in its original packaging and include your proof of purchase, then contact us for return instructions. Return shipping charges will be paid or reimbursed by us.
 
 **REFUNDS**
 After receiving your return and inspecting the condition of your item, we will process your return. Please allow at least seven (7) days from the receipt of your item to process your return. Refunds may take 1-2 billing cycles to appear on your credit card statement.
@@ -219,7 +219,7 @@ After receiving your return and inspecting the condition of your item, we will p
 For defective or damaged products, please contact us at the contact details below to arrange a refund or exchange.
 
 **QUESTIONS**
-If you have any questions concerning our return policy, please contact us at info@laserprintguide.co."
+If you have any questions concerning our return policy, please contact us at info@myprintermaster.co."
 
 ### D. Shipping Policy (`/shipping-policy`)
 **Title:** Shipping policy
@@ -238,7 +238,7 @@ We do not offer international shipping at this time. We deliver to all addresses
 If delivery is delayed for any reason we will let you know as soon as possible and will advise you of a revised estimated date for delivery.
 
 **How can you contact us about this policy?**
-Email: info@laserprintguide.co"
+Email: info@myprintermaster.co"
 
 ---
 

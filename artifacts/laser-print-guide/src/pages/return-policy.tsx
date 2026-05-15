@@ -14,13 +14,13 @@ export default function ReturnPolicy() {
 
       <h2>RETURN PROCESS</h2>
       <p>
-        To return an item, please email customer service at <a href="mailto:info@laserprintguide.co">info@laserprintguide.co</a>.
+        To return an item, please email customer service at <a href="mailto:info@myprintermaster.co">info@myprintermaster.co</a>.
       </p>
       
       <div className="bg-slate-50 p-8 border border-slate-200 mt-6 rounded-2xl not-prose">
         <p className="font-medium text-slate-700 mb-4 italic">Place the item securely in its original packaging and include your proof of purchase, then contact us for return instructions:</p>
         <p className="text-slate-900 font-bold leading-relaxed uppercase">
-          LASER PRINT GUIDE
+          My Printer Master
         </p>
         <p className="mt-6 text-slate-900 font-bold uppercase text-xs tracking-widest">
           Return shipping charges will be paid or reimbursed by us.
@@ -39,7 +39,7 @@ export default function ReturnPolicy() {
 
       <h2>QUESTIONS</h2>
       <p>If you have any questions concerning our return policy, please contact us at:</p>
-      <p><a href="mailto:info@laserprintguide.co">info@laserprintguide.co</a></p>
+      <p><a href="mailto:info@myprintermaster.co">info@myprintermaster.co</a></p>
     </PolicyLayout>
   );
 }

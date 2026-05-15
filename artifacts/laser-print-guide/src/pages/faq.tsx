@@ -91,7 +91,7 @@ export default function FAQ() {
   return (
     <div className="bg-white text-slate-950">
       <SEO
-        title="FAQ | Laser Print Guide"
+        title="FAQ | My Printer Master"
         description="Find instant answers to common questions about orders, shipping, and printer setups."
       />
 

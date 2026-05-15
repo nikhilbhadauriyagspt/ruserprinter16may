@@ -1,22 +1,22 @@
-# Laser Print Guide
+# My Printer Master
 
 > Quality destination for high-performance printers and reliable printer accessories.
 
 ## Overview
-Laser Print Guide is a premier online retailer specializing in precision printing hardware, including laser printers, inkjet printers, and professional workstations. We provide nationwide delivery across the USA.
+My Printer Master is a premier online retailer specializing in precision printing hardware, including laser printers, inkjet printers, and professional workstations. We provide nationwide delivery across the USA.
 
 ## Key Information
-- **Website:** https://laserprintguide.co
+- **Website:** https://myprintermaster.co
 - **Core Products:** All-in-One Printers, Laser Printers, Inkjet Printers, Thermal Printers, Large Format Printers, and Accessories.
 - **Service Area:** Nationwide USA
-- **Support Email:** info@laserprintguide.co
+- **Support Email:** info@myprintermaster.co
 
 ## Pages
-- [Home](https://laserprintguide.co/) - Overview of top products and featured collections.
-- [Shop](https://laserprintguide.co/shop) - Full product catalog with filtering by category and brand.
-- [About Us](https://laserprintguide.co/about) - Our mission and commitment to quality printing solutions.
-- [FAQ](https://laserprintguide.co/faq) - Common questions about shipping, warranty, and orders.
-- [Contact](https://laserprintguide.co/contact) - Support and inquiry form.
+- [Home](https://myprintermaster.co/) - Overview of top products and featured collections.
+- [Shop](https://myprintermaster.co/shop) - Full product catalog with filtering by category and brand.
+- [About Us](https://myprintermaster.co/about) - Our mission and commitment to quality printing solutions.
+- [FAQ](https://myprintermaster.co/faq) - Common questions about shipping, warranty, and orders.
+- [Contact](https://myprintermaster.co/contact) - Support and inquiry form.
 
 ## Technology Stack
 - **Frontend:** React with Vite

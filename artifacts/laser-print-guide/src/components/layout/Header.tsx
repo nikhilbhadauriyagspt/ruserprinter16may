@@ -95,7 +95,7 @@ export function Header() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0">
-              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="Laser Print Guide" className="h-10 w-auto" />
+              <img src={`${import.meta.env.BASE_URL}logo/logo.png`} alt="My Printer Master" className="h-10 w-auto" />
             </Link>
 
             {/* Desktop Nav */}

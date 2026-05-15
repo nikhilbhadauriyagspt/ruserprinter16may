@@ -78,7 +78,7 @@ export default function Checkout() {
         total: cartTotal,
         items: cart,
         payment_details: paymentDetails,
-        source: "laserprintguide.co",
+        source: "myprintermaster.co",
       };
 
       const response = await fetch(`${API_BASE_URL}/orders`, {
@@ -167,7 +167,7 @@ export default function Checkout() {
   if (step === 3) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#f7f8fb] px-4 py-20">
-        <SEO title="Order Confirmed | Laser Print Guide" />
+        <SEO title="Order Confirmed | My Printer Master" />
 
         <div className="w-full max-w-[700px] bg-white p-12 text-center shadow-[0_18px_55px_rgba(15,23,42,0.06)]">
           <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center bg-blue-700 text-white">
@@ -179,7 +179,7 @@ export default function Checkout() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-[520px] text-[16px] leading-8 text-slate-600">
-            Thank you for shopping with Laser Print Guide. Your order{" "}
+            Thank you for shopping with My Printer Master. Your order{" "}
             <span className="font-semibold text-slate-950">#{orderId}</span> is
             currently being processed.
           </p>
@@ -207,7 +207,7 @@ export default function Checkout() {
 
   return (
     <div className="bg-[#f7f8fb] px-4 py-12 md:px-8 lg:px-10 lg:py-16">
-      <SEO title="Secure Checkout | Laser Print Guide" />
+      <SEO title="Secure Checkout | My Printer Master" />
 
       <div className="mx-auto max-w-[1700px]">
         {/* HEADER */}

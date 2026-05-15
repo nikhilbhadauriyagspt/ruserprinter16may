@@ -54,8 +54,8 @@ export default function About() {
   return (
     <div className="bg-white text-slate-950">
       <SEO
-        title="About Us | Laser Print Guide"
-        description="Laser Print Guide makes choosing the right printing products easier with clear, straightforward choices and a smooth interface."
+        title="About Us | My Printer Master"
+        description="My Printer Master makes choosing the right printing products easier with clear, straightforward choices and a smooth interface."
       />
 
       {/* HERO */}
@@ -73,7 +73,7 @@ export default function About() {
             </h1>
 
             <p className="mt-6 max-w-[620px] text-[16px] leading-8 text-slate-600">
-              Laser Print Guide is built around a simple goal — to make choosing the
+              My Printer Master is built around a simple goal — to make choosing the
               right printing products easier. We keep things clear,
               straightforward, and easy to explore.
             </p>
@@ -193,12 +193,12 @@ export default function About() {
             </span>
 
             <h2 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-950 md:text-[46px]">
-              Why Laser Print Guide Started
+              Why My Printer Master Started
             </h2>
 
             <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
               <p className="text-[16px] leading-8 text-slate-600">
-                We started Laser Print Guide because we noticed how frustrating it
+                We started My Printer Master because we noticed how frustrating it
                 was to find a reliable printer online. It had become a maze of
                 confusing words, complicated descriptions, and options that just
                 didn't last.
@@ -252,7 +252,7 @@ export default function About() {
           <div className="mx-auto mt-20 max-w-[760px] border-t border-white/10 pt-16">
             <h3 className="text-[26px] font-semibold">Who It's For</h3>
             <p className="mt-4 text-[18px] leading-8 text-slate-400">
-              Laser Print Guide is designed for individuals and small businesses who
+              My Printer Master is designed for individuals and small businesses who
               want practical and dependable printing solutions for everyday use.
             </p>
           </div>
@@ -267,7 +267,7 @@ export default function About() {
           </span>
 
           <h2 className="mt-4 text-[38px] font-semibold tracking-tight text-slate-950 md:text-[54px]">
-            Get Started With Laser Print Guide
+            Get Started With My Printer Master
           </h2>
 
           <p className="mx-auto mt-5 max-w-[620px] text-[18px] leading-8 text-slate-600">
