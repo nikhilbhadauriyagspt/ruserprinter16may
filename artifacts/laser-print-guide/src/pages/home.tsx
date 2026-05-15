@@ -30,14 +30,16 @@ export default function Home() {
       
       {/* Hero Banner */}
       <section className="bg-white">
-        <img
-          src={`${import.meta.env.BASE_URL}hero-banner.png`}
-          alt="Print More, Achieve More — High Performance Printers for Every Business"
-          className="block w-full h-auto"
-          width="1920"
-          height="600"
-          fetchPriority="high"
-        />
+        <Link href="/shop" className="block cursor-pointer">
+          <img
+            src={`${import.meta.env.BASE_URL}hero-banner.png`}
+            alt="Print More, Achieve More — High Performance Printers for Every Business"
+            className="block w-full h-auto"
+            width="1920"
+            height="600"
+            fetchPriority="high"
+          />
+        </Link>
       </section>
 
       {/* About Section */}

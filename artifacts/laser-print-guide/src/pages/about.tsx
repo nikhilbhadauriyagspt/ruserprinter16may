@@ -113,7 +113,7 @@ export default function About() {
             <img
               src={`${import.meta.env.BASE_URL}category/all-in-one-printers.jpg`}
               alt="Honest printing product choices"
-              className="h-auto w-full object-cover mix-blend-multiply opacity-50 scale-110"
+              className="h-auto w-full object-cover mix-blend-multiply"
             />
           </div>
 

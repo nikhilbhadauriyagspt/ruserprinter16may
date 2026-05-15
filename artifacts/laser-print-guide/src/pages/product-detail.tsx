@@ -141,14 +141,6 @@ export default function ProductDetail() {
 
           {/* Details */}
           <div className="flex flex-col pt-2 md:pt-8">
-            <div className="flex items-center gap-3 mb-4">
-              <Link href={`/brand/${product.brand_name.toLowerCase()}`}>
-                <Badge variant="secondary" className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono">
-                  {product.brand_name}
-                </Badge>
-              </Link>
-            </div>
-            
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
               {product.name}
             </h1>
@@ -201,24 +193,13 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-10 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            <div className="flex flex-wrap gap-x-8 gap-y-4 mb-10 bg-slate-50 p-6 rounded-2xl border border-slate-100">
               <div className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                <Check className="w-5 h-5 text-green-500" /> In Stock
+                <ShieldCheck className="w-5 h-5 text-primary" /> Easy Return
               </div>
               <div className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                <ShieldCheck className="w-5 h-5 text-primary" /> Full Warranty
+                <Truck className="w-5 h-5 text-primary" /> Free Shipping
               </div>
-              <div className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                <Truck className="w-5 h-5 text-primary" /> Free Freight Over $500
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 mb-4">Product Description</h3>
-              <div 
-                className="prose prose-slate max-w-none text-slate-600 prose-p:leading-relaxed prose-li:my-1"
-                dangerouslySetInnerHTML={{ __html: product.description || "No description provided." }}
-              />
             </div>
           </div>
         </div>
